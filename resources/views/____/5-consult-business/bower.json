@@ -1,0 +1,30 @@
+{
+  "name": "Template",
+  "description": "Template",
+  "main": "",
+  "authors": [
+    "Amir Bashiri"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.*",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-rtl": "3.*",
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2",
+    "font-awesome": "^4.7.0",
+    "vazir-font": "^13.0.1",
+    "animate.css": "^3.5.2",
+    "owl.carousel": "^2.2.1",
+    "bootstrap": "^3.3.7",
+    "aos": "^2.2.0"
+  }
+}

@@ -1,0 +1,37 @@
+@font-face {
+  font-family: Vazir;
+  src: url('../fonts/vazir/Vazir.eot');
+  src: url('../fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/vazir/Vazir.woff') format('woff'),
+  url('../fonts/vazir/Vazir.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vazir-bold;
+  src: url('../fonts/vazir/Vazir-Bold.eot');
+  src: url('../fonts/vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/vazir/Vazir-Bold.woff') format('woff'),
+  url('../fonts/vazir/Vazir-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vazir-light;
+  src: url('../fonts/vazir/Vazir-Light.eot');
+  src: url('../fonts/vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/vazir/Vazir-Light.woff') format('woff'),
+  url('../fonts/vazir/Vazir-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'icofont';
+  src: url('../fonts/icofonts/icofont.eot');
+  src: url('../fonts/icofonts/icofont.eot#iefix') format('embedded-opentype'),
+  url('../fonts/icofonts/icofont.ttf') format('truetype'),
+  url('../fonts/icofonts/icofont.woff') format('woff'),
+  url('../fonts/icofonts/icofont.svg#icofont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
