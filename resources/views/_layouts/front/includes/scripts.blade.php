@@ -1,5 +1,17 @@
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target=".main-header"><i class="fa fa-angle-up"></i></div>
-
-<script src="{{ asset('_site/assets/js/aos.js') }}"></script>
-<script src="{{ asset('_site/assets/js/main.js') }}"></script>
+<script src="{{ asset('_site/js/jquery-2.2.3.js') }}"></script>
+<script src="{{ asset('_site/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('_site/js/bootsnav.js') }}"></script>
+<script src="{{ asset('_site/js/jquery.appear.js') }}"></script>
+<script src="{{ asset('_site/js/jquery-countTo.js') }}"></script>
+<script src="{{ asset('_site/js/jquery.parallax-1.1.3.js') }}"></script>
+<script src="{{ asset('_site/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('_site/js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ asset('_site/js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('_site/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('_site/js/revolution.extension.layeranimation.min.js') }}"></script>
+<script src="{{ asset('_site/js/revolution.extension.navigation.min.js') }}"></script>
+<script src="{{ asset('_site/js/revolution.extension.parallax.min.js') }}"></script>
+<script src="{{ asset('_site/js/revolution.extension.slideanims.min.js') }}"></script>
+<script src="{{ asset('_site/js/revolution.extension.video.min.js') }}"></script>
+<script src="{{ asset('_site/js/wow.min.js') }}"></script>
+<script src="{{ asset('_site/js/functions.js') }}"></script>

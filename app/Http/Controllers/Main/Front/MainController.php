@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers\Main\Front;
 
-use App\Service;
 use Cache;
 use App\News;
 use App\Album;
 use App\Slider;
+use App\Service;
 use App\Notification;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class MainController extends Controller
 {
-    public function show(Request $request)
+    public function show()
     {
-        $this->seo()->setTitle('هنرستان مائده');
-        $this->seo()->setDescription('صفحه اصلی');
+        $this->seo()->setDescription('طرحی نو اندیشه ای نو در هنرستان انفورماتیک مائده به هدف رسیدن نیازمند روش است.');
 
         $sliders = Cache::remember('_front_sliders_', 1, function () {
             return Slider::latest()->take(5)->get(['title', 'image', 'description', 'link']);
@@ -29,7 +27,7 @@ class MainController extends Controller
                 ->where('status', 'publish')
                 ->where('publish_at', '<=', now())
                 ->where(function (Builder $news) {
-                    $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
+                    return $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
                 })
                 ->take(3)
                 ->get(['id', 'title', 'summary', 'image', 'created_at']);
@@ -40,8 +38,8 @@ class MainController extends Controller
                 ->latest()
                 ->where('status', 'publish')
                 ->where('publish_at', '<=', now())
-                ->where(function (Builder $news) {
-                    $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
+                ->where(function (Builder $notification) {
+                    return $notification->whereNull('expire_at')->orWhere('expire_at', '>=', now());
                 })->take(3)->get(['id', 'title', 'summary', 'image', 'created_at']);
         });
 
@@ -50,8 +48,8 @@ class MainController extends Controller
                 ->latest()
                 ->where('status', 'publish')
                 ->where('publish_at', '<=', now())
-                ->where(function (Builder $news) {
-                    $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
+                ->where(function (Builder $service) {
+                    return $service->whereNull('expire_at')->orWhere('expire_at', '>=', now());
                 })->take(3)->get(['id', 'title', 'summary', 'image', 'created_at']);
         });
 

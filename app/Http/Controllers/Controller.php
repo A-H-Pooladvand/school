@@ -15,7 +15,10 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, SEOToolsTrait;
+    use AuthorizesRequests,
+        DispatchesJobs,
+        ValidatesRequests,
+        SEOToolsTrait;
 
     public function __construct()
     {

@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ config('app.locale') }}" dir="rtl">
 
 <head>
+    {!! SEO::generate() !!}
     @include('_layouts.front.includes.styles')
     @stack('page-styles')
     @stack('styles')
