@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('_site/css/bootstrap-rtl.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/font-awesome.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/edua-icons.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/animate.min.css') }}">
@@ -13,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/bootsnav.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/loader.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('_site/css/append.css') }}">
 <link rel="icon" href="{{ asset('_site/images/favicon.png') }}">
 
 <!--[if lt IE 9]>

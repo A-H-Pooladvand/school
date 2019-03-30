@@ -13,11 +13,8 @@ class ServiceController extends Controller
 {
     public function index(Request $request)
     {
-        $this->seo()->setTitle('Service');
-        $this->seo()->setDescription('SANIK GROUP latest service');
-
         $page = $request->has('page') ? $request->query('page') : 1;
-        $service = Cache::remember("_front_service_index_{$page}", 1, function () {
+        $services = Cache::remember("_front_services_index_{$page}", 1, function () {
 
             return Service::latest()
                 ->where('status', 'publish')
@@ -27,12 +24,15 @@ class ServiceController extends Controller
                 })->paginate(9, ["id", "title", "summary", "image", "created_at"]);
         });
 
-        return view('service.front.index', compact('service'));
+        $this->seo()->setTitle('سرویس ها');
+        $this->seo()->setDescription($services[0]['summary']);
+
+        return view('service.front.index', compact('services'));
     }
 
     public function show($id)
     {
-        $service = Service::with('tags', 'galleries', 'files')
+        $service = Service::with('tags', 'files')
             ->where('status', 'publish')
             ->where('publish_at', '<=', now())
             ->where(function (Builder $service) {
@@ -41,16 +41,16 @@ class ServiceController extends Controller
 
         $categories = $service->categories()->latest()->take(5)->get(['id', 'title']);
 
-        $latestService = Service::latest()
+        $relatedServices = Service::latest()
             ->where('status', 'publish')
             ->where('publish_at', '<=', Carbon::now())
             ->where('expire_at', '>=', Carbon::now())
             ->where('id', '<>', $service->id)
-            ->take(5)->get();
+            ->take(3)->get();
 
         $this->seo()->setTitle($service->title);
         $this->seo()->setDescription($service->description);
 
-        return view('service.front.show', compact('service', 'latestService', 'categories'));
+        return view('service.front.show', compact('service', 'relatedServices', 'categories'));
     }
 }

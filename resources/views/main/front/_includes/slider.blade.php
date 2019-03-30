@@ -1,13 +1,12 @@
-<section class="rev_slider_wrapper text-center">
-    <!-- START REVOLUTION SLIDER 5.0 auto mode -->
+<section class="rev_slider_wrapper text-center heading_space">
     <div id="rev_slider" class="rev_slider" data-version="5.0">
+
         <ul>
             @foreach($sliders as $slider)
                 <li data-transition="fade">
-                    <!-- MAIN IMAGE -->
                     <img src="{{ image_url($slider->image, 160, 73) }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme"
+
+                    <div class="tp-caption tp-resizeme slider__title"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['326','270','270','150']" data-voffset="['0','0','0','0']"
                          data-responsive_offset="on"
@@ -20,7 +19,8 @@
                     >
                         <h1>{{ $slider->title }}</h1>
                     </div>
-                    <div class="tp-caption tp-resizeme"
+
+                    <div class="tp-caption tp-resizeme slider__description"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['380','340','300','350']" data-voffset="['0','0','0','0']"
                          data-responsive_offset="on"
@@ -28,9 +28,12 @@
                          data-transform_idle="o:1;"
                          data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;"
                          data-transform_out="opacity:0;s:1000;s:1000;"
-                         data-start="1500"><p>{{ $slider->description }}</p>
+                         data-start="1500"
+                    >
+                        <p>{{ $slider->description }}</p>
                     </div>
-                    <div class="tp-caption  tp-resizeme"
+
+                    <div class="tp-caption  tp-resizeme slider__link"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['450','390','350','250']" data-voffset="['0','0','0','0']"
                          data-responsive_offset="on"
@@ -40,11 +43,13 @@
                          data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;"
                          data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
                          data-mask_out="x:0;y:0;s:inherit;e:inherit;"
-                         data-start="2000">
+                         data-start="2000"
+                    >
                         <a href="{{ $slider->link }}" class="border_radius btn_common white_border" target="_blank">مشاهده</a>
                     </div>
+
                 </li>
             @endforeach
         </ul>
-    </div><!-- END REVOLUTION SLIDER -->
+    </div>
 </section>

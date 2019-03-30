@@ -1,61 +1,61 @@
 //LOADER
-$(window).on("load", function() {
+$(window).on("load", function () {
     "use strict";
     $(".loader").fadeOut(800);
 
 });
 
-jQuery(function($) {
+jQuery(function ($) {
     "use strict";
 
     // ************ Back to Top
     var amountScrolled = 700;
     var backBtn = $("a.scrollToTop");
-    $(window).on("scroll", function() {
+    $(window).on("scroll", function () {
         if ($(window).scrollTop() > amountScrolled) {
             backBtn.fadeIn("slow");
         } else {
             backBtn.fadeOut("slow");
         }
     });
-    backBtn.on("click", function() {
+    backBtn.on("click", function () {
         $("html, body").animate({
             scrollTop: 0
         }, 700);
         return false;
     });
 
-    // Push Menus 
+    // Push Menus
     var $menuLeft = $(".pushmenu-left");
     var $menuRight = $(".pushmenu-right");
     var $toggleleft = $("#menu_bars.left");
     var $toggleright = $("#menu_bars.right");
-    $toggleleft.on("click", function() {
+    $toggleleft.on("click", function () {
         $(this).toggleClass("active");
         $(".pushmenu-push").toggleClass("pushmenu-push-toright");
         $menuLeft.toggleClass("pushmenu-open");
         return false;
     });
-    $toggleright.on("click", function() {
+    $toggleright.on("click", function () {
         $(this).toggleClass("active");
         $(".pushmenu-push").toggleClass("pushmenu-push-toleft");
         $menuRight.toggleClass("pushmenu-open");
         return false;
     });
 
-    //push DropDowns 
+    //push DropDowns
     var side_drop = $('.push_nav .dropdown');
-    side_drop.on('show.bs.dropdown', function(e) {
+    side_drop.on('show.bs.dropdown', function (e) {
         $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
     });
-    side_drop.on('hide.bs.dropdown', function(e) {
+    side_drop.on('hide.bs.dropdown', function (e) {
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
 
-    // ************ Accordions 
+    // ************ Accordions
     $(".items > li:first-child .sub-items").fadeIn();
     $(".items > li:first-child >").addClass("expanded");
-    $(".items > li > a").on('click', function(e) {
+    $(".items > li > a").on('click', function (e) {
         e.preventDefault();
         var $this = $(this);
         if ($this.hasClass("expanded")) {
@@ -69,25 +69,25 @@ jQuery(function($) {
     });
 
     // ************ Search On Click
-    
-        $(".search_btn").on("click", function(event) {
-            event.preventDefault();
-            $("#search").addClass("open");
-            $("#search > form > input[type='search']").focus();
-        });
 
-        $("#search, #search button.close").on("click keyup", function(event) {
-            if (event.target == this || event.target.className == "close" || event.keyCode == 27) {
-                $(this).removeClass("open");
-            }
-        });
-    
+    $(".search_btn").on("click", function (event) {
+        event.preventDefault();
+        $("#search").addClass("open");
+        $("#search > form > input[type='search']").focus();
+    });
 
-    // ************ tabbed content 
+    $("#search, #search button.close").on("click keyup", function (event) {
+        if (event.target == this || event.target.className == "close" || event.keyCode == 27) {
+            $(this).removeClass("open");
+        }
+    });
+
+
+    // ************ tabbed content
     $(".tab_content").hide();
     $(".tab_content:first").show();
     /* tab mode */
-    $("ul.tabs li").on('click', function() {
+    $("ul.tabs li").on('click', function () {
         $(".tab_content").hide();
         var activeTab = $(this).attr("rel");
         $("#" + activeTab).fadeIn();
@@ -98,7 +98,7 @@ jQuery(function($) {
 
     });
     /*drawer mode on Mobile Version*/
-    $(".tab_drawer_heading").on("click", function() {
+    $(".tab_drawer_heading").on("click", function () {
         $(".tab_content").hide();
         var d_activeTab = $(this).attr("rel");
         $("#" + d_activeTab).fadeIn(1200);
@@ -109,7 +109,7 @@ jQuery(function($) {
     });
 
     //contact form
-    $("#btn_submit").on("click", function(){
+    $("#btn_submit").on("click", function () {
         //get input field values
         var user_name = $('input[name=name]').val();
         var user_email = $('input[name=email]').val();
@@ -140,9 +140,9 @@ jQuery(function($) {
             };
 
             //Ajax post data to server
-            $.post('contact_me.php', post_data, function(response) {
+            $.post('contact_me.php', post_data, function (response) {
 
-                //load json data from server and output message     
+                //load json data from server and output message
                 if (response.type == 'error') {
                     output = '<div class="alert-danger" style="padding:10px; margin-bottom:10px;">' + response.text + '</div>';
                 } else {
@@ -162,13 +162,13 @@ jQuery(function($) {
 
 
     //reset previously set border colors and hide all message on .keyup()
-    $(".form-inline input, .form-inline textarea").keyup(function() {
+    $(".form-inline input, .form-inline textarea").keyup(function () {
         $("#result").slideUp();
     });
 
     // ************ Fun Facts
-    $(".number-counters").appear(function() {
-        $(".number-counters [data-to]").each(function() {
+    $(".number-counters").appear(function () {
+        $(".number-counters [data-to]").each(function () {
             var e = $(this).attr("data-to");
             $(this).delay(6e3).countTo({
                 from: 50,
@@ -184,13 +184,14 @@ jQuery(function($) {
         autoPlay: false,
         items: 3,
         pagination: false,
+        // rtl: true,
         stopOnHover: true,
         navigationText: ["<i class='icon-chevron-thin-left'></i>", "<i class=' icon-chevron-thin-right'></i>"],
         navigation: true,
         itemsDesktop: [1199, 2],
         itemsDesktopSmall: [979, 2],
-		  //itemsTablet: [768,2],
-		  itemsMobile : [479,1],
+        //itemsTablet: [768,2],
+        itemsMobile: [479, 1],
 
     });
 
@@ -236,9 +237,9 @@ jQuery(function($) {
         gridwidth: [1170, 960, 750, 480],
         gridheight: [670, 600, 500, 390],
     });
-	 
-	 //Full Screen
-	 revapi = jQuery("#rev_slider_full").revolution({
+
+    //Full Screen
+    /*revapi = jQuery("#rev_slider_full").revolution({
         sliderType: "standard",
         sliderLayout: "fullscreen",
         scrollbarDrag: "true",
@@ -269,9 +270,9 @@ jQuery(function($) {
         gridwidth: [1170, 960, 750, 480],
         gridheight: [670, 600, 500, 390],
     });
-	 
-	 
-	 revapi = jQuery("#rev_slider_video").revolution({
+
+
+    revapi = jQuery("#rev_slider_video").revolution({
         sliderType: "standard",
         sliderLayout: "fullwidth",
         scrollbarDrag: "true",
@@ -301,11 +302,8 @@ jQuery(function($) {
         responsiveLevels: [4096, 1024, 778, 480],
         gridwidth: [1170, 960, 767, 480],
         gridheight: [600, 550, 450, 320],
-    });
-	 
-	 
-	 
-	 
+    });*/
+
 
     // ============= Parallax=============
     $(".page_header").parallax("50%", 0.3);

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 return [
 
-    'latest_news' => Cache::remember('_footer_news', 1, function () {
+    /*'latest_news' => Cache::remember('_footer_news', 1, function () {
         return News::with('categories:id,title')
             ->latest()
             ->where('status', 'publish')
@@ -48,6 +48,6 @@ return [
                 ];
             })
         ]
-    ]
+    ]*/
 
 ];
