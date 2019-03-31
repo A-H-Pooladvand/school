@@ -15,6 +15,13 @@ class CreateEnrollmentsTable extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
+            $table->string('major');
+            $table->string('grade');
+            $table->string('address');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
