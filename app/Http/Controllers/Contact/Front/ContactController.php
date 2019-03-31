@@ -11,11 +11,11 @@ class ContactController extends Controller
 {
     public function show()
     {
+        $contact = ContactUs::first();
 
-        $this->seo()->setTitle('Contact us');
-        $this->seo()->setDescription('For being in touch with us please fill the form.');
+        $this->seo()->setTitle('تماس با ما');
+        $this->seo()->setDescription($contact->title);
 
-        $contact = ContactUs::findOrFail(1);
         return view('contact.front.show', compact('contact'));
     }
 
@@ -27,7 +27,7 @@ class ContactController extends Controller
             'phone' => 'required',
             'subject' => 'required|max:50',
             'content' => 'required|max:500',
-            'captcha' => 'required|captcha',
+            //'captcha' => 'required|captcha',
         ]);
 
 
@@ -40,9 +40,9 @@ class ContactController extends Controller
         ]);
 
         if ($contact) {
-            return redirect()->back()->with('message', 'Thank you. we will be in touch with you shortly.');
+            return back()->with('message', 'درخواست شما ثبت شد. در اسرع وقت به درخواست شما رسیدگی خواهد شد.');
         }
 
-        return redirect()->back()->with('message', 'Unfortunately there\'s been an error while trying to submit your message, please try again later.');
+        return back()->with('message', 'مشکلی پیش امده لطفا دوباره تلاش نمایید.');
     }
 }

@@ -2,68 +2,35 @@
 
 @section('content')
 
-    <main>
-        <div class="page-loader">
-            <div class="loader">Loading...</div>
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="page-content heading_space">
+                <h1>درباره ما</h1>
+            </div>
         </div>
-        <div class="main">
+    </section>
 
+    <section id="about" class="padding">
+        <div class="container aboutus">
+            <div class="row">
 
-            <section class="module-small">
-                <div class="container">
+                <div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+                    <h2 class="heading heading_space">
+                        {{ $about->title }}
+                        <span class="divider-left"></span>
+                    </h2>
+                    <h4 class="bottom25">{{ $about->summary }}</h4>
+                    <p class="bottom25">{{ $about->content }}</p>
+                </div>
 
-                    <div class="post">
-
-                        @if(!empty($about->image))
-                            <div class="post-thumbnail text-center">
-                                {{--<img src="{{ image_url($about->image, 192, 60) }}" class="img-rounded" alt="Blog Featured Image"/>--}}
-                                <div class="img--custom" style="background: url({{ image_url($about->image, 108, 45) }}) no-repeat center center; width: 100%; height: 450px;background-size: 100% 100%;border-radius: 4px"></div>
-                            </div>
-                        @endif
-
-                        <div class="post-header font-alt">
-                            <h1 class="post-title">{{ $about->title }}</h1>
-                            <h5>{{ $about->summary }}</h5>
-                            <div class="post-meta">{{ $about->created_at->format('Y-d-m') }}
-                            </div>
-                        </div>
-                        <div class="post-entry">
-                            <p>{!! $about->content !!}</p>
-                        </div>
+                <div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
+                    <div class="image">
+                        <img class="img-rounded" src="{{ image_url($about->image, 52, 33, true) }}" alt="{{ $about->title }}" title="{{ $about->title }}">
                     </div>
                 </div>
 
-            </section>
-            <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-
-            @if(!empty($about->galleries))
-                <section class="module">
-                    <div class="container">
-                        <div class="row">
-                            <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false">
-
-                                @foreach($about->galleries as $item)
-                                    <div class="owl-item">
-                                        <div class="col-sm-12">
-                                            <div class="ex-product">
-
-                                                <a href="#">
-                                                    <img class="img-circle" src="{{ image_url($item->path, 50, 50, true) }}" alt="{{ $item->title }}"/>
-                                                </a>
-
-                                                <h4 class="shop-item-title font-alt">{{ $item->title }}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            @endif
-
+            </div>
         </div>
-        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </main>
+    </section>
 
 @stop

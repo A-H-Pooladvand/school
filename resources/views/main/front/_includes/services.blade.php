@@ -17,7 +17,7 @@
                         </div>
 
                         <h4 class="top30">
-                            <a href="event_detail.html">
+                            <a href="{{ route('service.show', $service->id) }}">
                                 {{ $service->title }}
                             </a>
                         </h4>

@@ -3,49 +3,48 @@
 
 @section('content')
 
-    <main>
-        <div class="page-loader">
-            <div class="loader">Loading...</div>
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="page-content heading_space">
+                <h1>اخبار</h1>
+            </div>
         </div>
+    </section>
 
-        <div class="main">
-            <section class="module">
-                <div class="container">
-                    <div class="row multi-columns-row post-columns">
+    <section id="blog" class="padding">
+        <div class="container">
+            <h2 class="hidden">Our Blog</h2>
 
-                        @foreach($news as $item)
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="post">
+            @foreach($news as $item)
+                <article class="blog_item heading_space wow fadeInLeft" data-wow-delay="300ms">
+                    <div class="row">
 
-                                    <div class="post-thumbnail">
-                                        <a href="{{ route('news.show', $item->id) }}">
-                                            <img class="img-rounded" src="{{ image_url($item->image, 36, 20, true) }}" alt="Blog-post Thumbnail"/>
-                                        </a>
-                                    </div>
-
-                                    <div class="post-header font-alt">
-                                        <h2 class="post-title"><a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a></h2>
-                                        <div class="post-meta">{{ $item->created_at->format('d-m-Y') }}
-                                        </div>
-                                    </div>
-                                    <div class="post-entry">
-                                        <p>{{ str_limit($item->summary, 250) }}</p>
-                                    </div>
-                                    <div class="post-more"><a class="more-link" href="{{ route('news.show', $item->id) }}">Read more</a></div>
-                                </div>
+                        <div class="col-md-5 col-sm-5 heading_space">
+                            <div class="image">
+                                <img src="{{ image_url($item->image, 32, 20, true) }}" alt="blog" class="border_radius">
                             </div>
-                        @endforeach
+                        </div>
+
+                        <div class="col-md-7 col-sm-7 heading_space">
+                            <h3>
+                                <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
+                            </h3>
+                            <ul class="comment margin10">
+                                <li><a href="#">{{ jdate($item->created_at)->format('Y-m-d') }}</a></li>
+                            </ul>
+
+                            <p class="margin10">{{ $item->summary }}</p>
+
+                            <a class=" btn_common btn_border margin10 border_radius" href="{{ route('news.show', $item->id) }}">بیشتر</a>
+                        </div>
 
                     </div>
+                </article>
+            @endforeach
 
-                    <div class="text-center">
-                        {{ $news->links() }}
-                    </div>
+            <div class="text-center">{{ $news->links() }}</div>
 
-                </div>
-            </section>
         </div>
-        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </main>
+    </section>
 
 @stop

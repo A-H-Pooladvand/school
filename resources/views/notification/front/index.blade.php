@@ -1,49 +1,35 @@
 @extends('_layouts.front.index')
 
-
 @section('content')
 
-
-    <main>
-        <div class="main">
-
-            <section class="module">
-                <div class="container">
-
-                    <div class="row multi-columns-row post-columns">
-                        @foreach($notifications as $notification)
-                            <div class="col-md-6 col-lg-6">
-                                <div class="post">
-                                    <div class="post-thumbnail">
-                                        <a href={{ route('notification', $notification->id) }}>
-                                            <img class="img-rounded" src="{{ image_url($notification->image, 55, 31, true) }}" alt="Blog-post Thumbnail"/>
-                                        </a>
-                                    </div>
-                                    <div class="post-header font-alt">
-                                        <h2 class="post-title">
-                                            <a href={{ route('notification.show', $notification->id) }}>{{ $notification->title }}</a>
-                                        </h2>
-                                        <div class="post-meta">{{ $notification->created_at->format('Y-d-m') }}
-                                        </div>
-                                    </div>
-                                    <div class="post-entry">
-                                        <p>{{ str_limit($notification->summary, 300) }}</p>
-                                    </div>
-                                    <div class="post-more"><a class="more-link" href={{ route('notification', $notification->id) }}>Read more</a></div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-
-                    <div class="text-center">
-                        {{ $notifications->links() }}
-                    </div>
-
-                </div>
-            </section>
-
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="page-content heading_space">
+                <h1>اطلاعیه ها</h1>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <section id="course_all" class="padding-bottom">
+        <div class="container">
+            <div class="row">
+
+                @foreach($notifications as $notification)
+                    <div class="col-sm-6">
+                        <div class="course margin_top wow fadeIn" data-wow-delay="400ms">
+                            <div class="image bottom25">
+                                <img src="{{ image_url($notification->image, 36, 24, true) }}" alt="Course" class="border_radius">
+                            </div>
+                            <h3 class="bottom10 mb-1">
+                                <a href="{{ route('notification.show', $notification->id) }}">{{ $notification->title }}</a>
+                            </h3>
+                            <p class="bottom20">{{ $notification->summary }}</p>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    </section>
 
 @stop

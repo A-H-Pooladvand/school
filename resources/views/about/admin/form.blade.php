@@ -80,55 +80,10 @@
                     </script>
                 @endpush
 
-                @component('_components.date_picker')
-                    @slot('title')تاریخ انتشار@endslot
-                    @slot('placeholder')لطفا تاریخ انتشار را تعیین نمایید@endslot
-                    @slot('value'){{ jdate($about->publish_at ?? null)->format('Y/m/d H:i:s') }}@endslot
-                    @slot('name') publish_at @endslot
-                @endcomponent
-
-                @component('_components.date_picker')
-                    @slot('title')تاریخ انقضا@endslot
-                    @slot('placeholder')لطفا تاریخ انقضا را تعیین نمایید@endslot
-                    @slot('value'){{ !empty($about->expire_at) ? jdate($about->expire_at)->format('Y/m/d H:i:s') : null }}@endslot
-                    @slot('name') expire_at @endslot
-                @endcomponent
-
-                <div class="form-group">
-                    <label for="input_priority" class="control-label">اولویت</label>
-                    <input id="input_priority" name="priority" type="text" class="form-control" value="{{ $about->priority ?? '1' }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="input_status" class="control-label">وضعیت</label>
-                    <br>
-                    @component('_components.bootstrap-select--single')
-
-                        @slot('name') status @endslot
-                        @slot('search') false @endslot
-
-                        @slot('options')
-                            <option {{ !empty($about->status) && $about->status === 'publish' ? 'selected' : '' }} value="publish">انتشار</option>
-                            <option {{ !empty($about->status) && $about->status === 'draft' ? 'selected' : '' }} value="draft">پیشنویس</option>
-                        @endslot
-
-                    @endcomponent
-                </div>
 
             </div>
 
         </div>
-
-        @component('_components.filemanager--multiple')
-
-            @slot('type') gallery @endslot
-            @slot('label') گالری تصاویر @endslot
-            @slot('index') 0 @endslot
-            @if(!empty($about->galleries))
-                @slot('data', $about->galleries)
-            @endif
-
-        @endcomponent
 
     </form>
 
@@ -151,14 +106,6 @@
 @section('helper_block')
 
     <div class="form-group helper-block">
-
-        <div class="pull-left">
-            @if(!empty($about))
-                {{ Breadcrumbs::render('about-edit', $about) }}
-            @else
-                {{ Breadcrumbs::render('about-create') }}
-            @endif
-        </div>
 
         <div class="text-right">
             <button type="button" class="btn btn-info btn-ajax">ذخیره</button>

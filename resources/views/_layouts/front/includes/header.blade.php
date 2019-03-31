@@ -1,4 +1,6 @@
-<a href="#" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
+<a href="#" class="scrollToTop">
+    <i class="fa fa-angle-up"></i>
+</a>
 
 <div class="loader">
     <div class="bouncybox">
@@ -26,19 +28,36 @@
                         <i class="icon-mail" style="padding-right: .5rem"></i>
                         info@maedehsch.ir
                     </span>
+
                 </div>
 
                 <ul class="social_top pull-right">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter4"></i></a></li>
-                    <li><a href="#"><i class="icon-google"></i></a></li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="icon-twitter4"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="icon-google"></i>
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
         </div>
     </div>
 </div>
 
-<!--Header-->
 <header>
     <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
         <div class="container">
@@ -49,7 +68,8 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <a class="navbar-brand" href="index.html"><img src="{{ asset('_site/images/logo-white.png') }}" alt="logo" class="logo logo-display">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('_site/images/logo-white.png') }}" alt="logo" class="logo logo-display">
                     <img src="{{ asset('_site/images/logo.png') }}" class="logo logo-scrolled" alt="">
                 </a>
 
@@ -58,7 +78,9 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOut">
                     @foreach($_header_front_menu as $menu)
-                        <li><a href="{{ $menu['link'] }}">{{ $menu['title'] }}</a></li>
+                        <li>
+                            <a href="{{ $menu['link'] }}">{{ $menu['title'] }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

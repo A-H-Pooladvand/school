@@ -13,9 +13,6 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $this->seo()->setTitle('News');
-        $this->seo()->setDescription('SANIK GROUP latest news');
-
         $page = $request->has('page') ? $request->query('page') : 1;
         $news = Cache::remember("_front_news_index_{$page}", 1, function () {
 
@@ -26,6 +23,9 @@ class NewsController extends Controller
                     $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
                 })->paginate(9, ["id", "title", "summary", "image", "created_at"]);
         });
+
+        $this->seo()->setTitle('اخبار');
+        $this->seo()->setDescription(array_first($news)['summary']);
 
         return view('news.front.index', compact('news'));
     }
@@ -41,7 +41,7 @@ class NewsController extends Controller
 
         $categories = $news->categories()->latest()->take(5)->get(['id', 'title']);
 
-        $latestNews = News::latest()
+        $relatedNews = News::latest()
             ->where('status', 'publish')
             ->where('publish_at', '<=', Carbon::now())
             ->where('expire_at', '>=', Carbon::now())
@@ -49,8 +49,8 @@ class NewsController extends Controller
             ->take(5)->get();
 
         $this->seo()->setTitle($news->title);
-        $this->seo()->setDescription($news->description);
+        $this->seo()->setDescription($news->content);
 
-        return view('news.front.show', compact('news', 'latestNews', 'categories'));
+        return view('news.front.show', compact('news', 'relatedNews', 'categories'));
     }
 }

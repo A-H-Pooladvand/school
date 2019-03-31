@@ -3,53 +3,37 @@
 
 @section('content')
 
-    <div class="main">
-
-        <section class="module-medium">
-            <div class="container">
-
-                <ul class="works-grid works-grid-gut works-hover-d" id="works-grid">
-                    @foreach($album->galleries as $album)
-                        <li class="work-item illustration webdesign">
-                            <a class="group1" href="{{ image_url($album->path, 102,76) }}">
-                                <div class="work-image">
-                                    <img src="{{ image_url($album->path, 56, 35, true) }}" alt="Portfolio Item"/>
-                                </div>
-
-                                <div class="work-caption font-alt">
-                                    <h3 class="work-title">{{ $album->title }}</h3>
-                                    {{--<div class="work-descr">Lorem ipsum</div>--}}
-                                </div>
-
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="heading_space page-content">
+                <h1>البوم تصاویر</h1>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </div>
+    <section id="gallery" class="padding">
+        <div class="container">
 
-    @push('styles')
-        <link rel="stylesheet" href="{{ asset('assets_front/css/colorbox.css') }}">
-        <style>
-            .work-item {
-                width: 33.33333% !important;
-            }
-        </style>
-    @endpush
+            <div class="mb-3">
+                <h3 class="mb-3">{{ $album->title }}</h3>
+                <img class="img-rounded" src="{{ image_url($album->image, 114, 30, true) }}" alt="{{ $album->title }}" style="width: 100%">
+            </div>
 
-    @push('top-scripts')
-        <script src="{{ asset('assets_front/js/jquery.colorbox-min.js') }}"></script>
+            <div id="projects" class="cbp">
 
-        <script>
-            $(document).ready(function () {
-                //Examples of how to assign the Colorbox event to elements
-                $(".group1").colorbox({rel: 'group1'});
-            });
-        </script>
+                @foreach($album->galleries as $album)
+                    <div class="cbp-item course">
+                        <img src="{{ image_url($album->path, 27, rand(25, 45), true) }}" alt="{{ $album->title }}">
+                        <div class="overlay">
+                            <div class="centered text-center">
+                                <a href="{{ image_url($album->path) }}" class="cbp-lightbox opens"> <i class="icon-focus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
-    @endpush
+            </div>
+        </div>
+    </section>
 
 @stop

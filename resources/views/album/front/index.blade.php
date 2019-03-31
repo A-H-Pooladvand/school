@@ -2,33 +2,40 @@
 
 @section('content')
 
-    <div class="main">
-        <section class="module-medium">
-            <div class="container">
-                <ul class="works-grid works-grid-gut works-hover-d" id="works-grid">
-                    @foreach($albums as $album)
-                        <li class="work-item illustration webdesign"><a href="{{ route('album.show', $album->id) }}">
-                                <div class="work-image">
-                                    <img src="{{ image_url($album->image, 56, 35, true) }}" alt="Portfolio Item"/>
-                                </div>
-
-                                <div class="work-caption font-alt">
-                                    <h3 class="work-title">{{ $album->title }}</h3>
-                                    {{--<div class="work-descr">Lorem ipsum</div>--}}
-                                </div>
-
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="heading_space page-content">
+                <h1>البوم تصاویر</h1>
             </div>
-        </section>
-
-        <div class="text-center">
-            {{ $albums->links() }}
         </div>
+    </section>
 
-        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </div>
+    <section id="gallery" class="padding">
+        <div class="container">
+
+            <div id="projects" class="cbp">
+
+                @foreach($albums as $album)
+                    <div class="cbp-item course">
+                        <a href="{{ route('album.show', $album->id) }}">
+                            <img class="img-rounded" src="{{ image_url($album->image, 27, rand(25, 45), true) }}" alt="{{ $album->title }}" title="{{ $album->title }}">
+                        </a>
+                    </div>
+                @endforeach
+
+                {{--@foreach($albums as $album)
+                    <div class="cbp-item course">
+                        <img src="{{ image_url($album->image, 27, rand(25, 45), true) }}" alt="">
+                        <div class="overlay">
+                            <div class="centered text-center">
+                                <a href="{{ image_url($album->image, 27, rand(25, 45), true) }}" class="cbp-lightbox opens"> <i class="icon-focus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach--}}
+
+            </div>
+        </div>
+    </section>
 
 @stop

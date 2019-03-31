@@ -2,101 +2,97 @@
 
 
 @section('content')
-    <main>
 
-        <div class="main">
-            <section class="module">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4 class="font-alt">Get in touch</h4><br/>
-                            <form id="" role="form" method="post" action="{{ route('contact.store') }}">
-                                {{ csrf_field() }}
-
-                                @if(Session::has('message'))
-                                    <div class="form-group">
-                                        <div class="alert alert-info">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            {{ Session::get('message') }}
-                                        </div>
-                                    </div>
-                                @endif
-
-                                <div class="form-group">
-                                    <label class="sr-only" for="name">Name</label>
-                                    <input class="form-control" type="text" id="name" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name."/>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="sr-only" for="email">Email</label>
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address."/>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="sr-only" for="phone">Phone</label>
-                                    <input class="form-control" type="tel" id="phone" name="phone" placeholder="Your Phone*" required="required" data-validation-required-message="Please enter your phone info."/>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="sr-only" for="subject">subject</label>
-                                    <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject*" required="required" data-validation-required-message="Please enter the subject."/>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="7" id="message" name="content" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6"><input class="form-control" type="text" id="captcha" name="captcha" placeholder="captcha code*" required="required" data-validation-required-message="Please enter the captcha."/></div>
-                                        <div class="col-sm-6">{!! captcha_img() !!}</div>
-                                    </div>
-
-                                    <p class="help-block text-danger"></p>
-                                </div>
-
-                                <div class="text-center">
-                                    <button class="btn btn-block btn-round btn-d" id="" type="submit">Submit</button>
-                                </div>
-
-                            </form>
-                            <div class="ajax-response font-alt" id="contactFormResponse"></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4 class="font-alt">{{ $contact->title }}</h4><br/>
-                            <p>{!! $contact->content !!}</p>
-                            {{--<hr/>--}}
-                            {{-- <h4 class="font-alt">Business Hours</h4><br/>
-                             <ul class="list-unstyled">
-                                 <li>Mo - Fr: 8am to 6pm</li>
-                                 <li>Sa, Su: 10am to 2pm</li>
-                             </ul>--}}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div id="map" style="width:100%;height:400px;"></div>
-            @push('scripts')
-                <script>
-                    var map;
-
-                    function initMap() {
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            center: {lat: -34.397, lng: 150.644},
-                            zoom: 8
-                        });
-                    }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr9Wm6vBLewdTB7FqTpg5TfzK6Dhh0XL4&callback=initMap" async defer></script>
-            @endpush
+    <section class="page_header padding-top">
+        <div class="container">
+            <div class="page-content heading_space">
+                <h1>تماس با ما</h1>
+            </div>
         </div>
-        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </main>
+    </section>
+
+    <section id="contact" class="padding">
+        <div class="container">
+
+            <h1 class="mb-1">{{ $contact->title }}</h1>
+            <p>{{ $contact->content }}</p>
+
+            <hr>
+
+            <div class="row padding-bottom">
+                <div class="col-md-4 contact_address heading_space fadeInLeft" data-wow-delay="4500ms">
+                    <h2 class="heading heading_space">
+                        <span>با ما در تماس باشید</span>
+                        <span class="divider-left"></span>
+                    </h2>
+
+                    <div class="address">
+                        <i class="icon icon-map-pin border_radius"></i>
+                        <h4>آدرس</h4>
+                        <p>ستارخان - خیابان خسرو جنوبی (صادقی پور) - 27 غربی - پلاک 5</p>
+                    </div>
+
+                    <div class="address">
+                        <i class="icon icon-mail border_radius"></i>
+                        <h4>ایمیل</h4>
+                        <p><a href="mailto:info@maedehsch.ir">info@maedehsch.ir</a></p>
+                    </div>
+
+                    <div class="address">
+                        <i class="icon icon-phone4 border_radius"></i>
+                        <h4>شماره تماس</h4>
+                        <p>021-44249559</p>
+                    </div>
+
+                </div>
+                <div class="col-md-8 fadeInRight" data-wow-delay="4500ms">
+                    <h2 class="heading heading_space">میتوانید با فرم زیر با ما تماس بگیرید<span class="divider-left"></span></h2>
+                    <form class="form-inline findus" method="POST" action="{{ route('contact.store') }}">
+                        {{ csrf_field() }}
+
+                        @include('_components.errors')
+                        @include('_components.message')
+
+                        <div class="row">
+
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="نام" name="name" id="name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="ایمیل" name="email" id="email">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="تلفن تماس" name="phone" id="website">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="موضوع تماس" name="subject" id="website">
+                            </div>
+
+                            <div class="col-md-12">
+                                <textarea placeholder="توضیحات" name="content" id="message"></textarea>
+                                <button class="btn_common yellow border_radius" id="btn_submit">ارسال</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="row wow bounceIn" data-wow-delay="300ms">
+                <div class="col-md-12">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @stop

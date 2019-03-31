@@ -15,14 +15,14 @@
                     <div class="news_box border_radius">
 
                         <h4>
-                            <a href="blog_detail.html">{{ $item->title }}</a>
+                            <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a>
                         </h4>
 
                         <ul class="commment">
                             <li><a href="#"><i class="icon-icons20"></i>{{ jdate($item->created_at)->format('Y-m-d') }}</a></li>
                         </ul>
                         <p>{{ $item->summary }}</p>
-                        <a href="blog_detail.html" class="readmore">ادامه مطلب</a>
+                        <a href="{{ route('news.show', $item->id) }}" class="readmore">ادامه مطلب</a>
                     </div>
 
                 </div>

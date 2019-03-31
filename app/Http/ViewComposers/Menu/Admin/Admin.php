@@ -235,15 +235,10 @@ return [
         'permission' => 'about',
         'sub' => [
             [
-                'title' => 'افزودن درباره ما',
-                'link' => route('admin.about.create'),
+                'title' => 'ویرایش درباره ما',
+                'link' => route('admin.about.edit'),
                 'permission' => 'create-about'
             ],
-            [
-                'title' => 'لیست درباره ما',
-                'link' => route('admin.about.index'),
-                'permission' => 'read-about'
-            ]
         ]
     ],
     // Contact-us
