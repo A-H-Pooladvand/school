@@ -243,6 +243,20 @@ return [
     ],
     // Contact-us
     [
+        'title' => 'پیش ثبت نام',
+        'icon' => 'fa fa-fw fa-diamond',
+        'link' => '#',
+        'permission' => 'contact',
+        'sub' => [
+            [
+                'title' => 'لیست درخواست ها',
+                'link' => route('admin.enrollment.index'),
+                'permission' => 'read-enrollment'
+            ]
+        ]
+    ],
+    // Contact-us
+    [
         'title' => 'تماس با ما',
         'icon' => 'fa fa-fw fa-phone',
         'link' => '#',
