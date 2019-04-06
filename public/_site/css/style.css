@@ -3,163 +3,64 @@
 
 
 @font-face {
-	font-family: 'museo_slab500';
-	src: url('../fonts/museo_slab_0-webfont.woff2') format('woff2'),
-	url('../fonts/museo_slab_0-webfont.woff') format('woff');
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir.ttf') format('truetype');
 	font-weight: normal;
-	font-style: normal;
-
 }
+
+/*@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir-Bold.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir-Bold.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir-Bold.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir-Bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
 @font-face {
-	font-family: 'museo_slab700';
-	src: url('../fonts/museo_slab_1-webfont.woff2') format('woff2'),
-	url('../fonts/museo_slab_1-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir-Light.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir-Light.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir-Light.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir-Light.ttf') format('truetype');
+	font-weight: 300;
 }
 
-/* CSS Document */
-/*Table of Content
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir-Medium.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir-Medium.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir-Medium.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir-Medium.ttf') format('truetype');
+	font-weight: 500;
+}
 
--body
--.topbar
-	-.social_top
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir-Thin.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir-Thin.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir-Thin.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir-Thin.ttf') format('truetype');
+	font-weight: 100;
+}
 
--header
-	-.header_top
-		-.company_info
-	-.navbar-sticky
-		-.attr-nav
-		-.navbar-menu
--#search
--.rev_slider_wrapper
--owl-slider
-
--#about
-	-.icon_box
-	-.about_box
-	-.priorty
-		-.about_post
-
--#courses
-	-.image
-
--#facts
-	-.number-counters
-		-.counters-item
-
--#pricing
-	-.pricing
-		-.pricing_item
-			-.item
-				-.content_wrap
-
--#reviews
-	-#review_slider
-		-.client_name
-
--#parallax
--.parallax
-
--#news
-	-.news_box
-		-.comment
-
--.page_header
-	-.page_nav
-
--#history
-	-.history_wrap
-
--#counter
-
--#tours
-	-.tour_media
-		-.tour_feature
-		-.tour_body
-
--#teachers
-	-.director_slider
-
--.error
-
--#blog
-	-.blog_item
-		-.blog_newest
-	-.findus
-	-.pager_nav
-		-.pagination
-	-.sidebar
-		-.widget
-		-.widget_search
-		-.category
-		-.tags
-
--#contact
-	-.contact_address
-		-.address
--#map
-
--#faq
-	-.faq_content
-		-.items
-			-.sub_items
-
--#gallery
-	-.projects
-		-.cbp-item
-			overlay
-				-centered
-
--#shop
-	-.shopping_box
-		-.shop_content
-			-.price_product
-	-.shop_info
-		-.quote
-		-.tag_cate
-		-.share
-	-.shop_tab
-		-.tabs
-		-.tab_container
-			-.tab_content
-				-.commentlist
-					-.avator
-					-.comment-content
-				-.rating
-				-.review-form
-	-.related_pro
-	-.cart_table
-		-.table-responsive
-			-.product-name
-	-.apply_coupon
-		-.coupon
-	-.totals
-		-.total_form
-			-.select
-
--#testinomila_page
-	-.js-grid-masonry
-	-.cbp
-		-.cbp-item
-			-.cbp-caption-defaultWrap
-				-.testimonial_wrap
-					-.testimonial_text
-						-.testimonial_pic
-							-.color
-							-.post_img
-
--footer
--.footer_panel
--.copyright
-
-
-*/
-
-
-
-/*General Styling*/
+@font-face {
+	font-family: Vazir;
+	src: url('../fonts/vazir-font-master/dist/Vazir-Black.eot');
+	src: url('../fonts/vazir-font-master/dist/Vazir-Black.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/vazir-font-master/dist/Vazir-Black.woff2') format('woff2'),
+	url('../fonts/vazir-font-master/dist/Vazir-Black.woff') format('woff'),
+	url('../fonts/vazir-font-master/dist/Vazir-Black.ttf') format('truetype');
+	font-weight: 900;
+}*/
 
 body{
 	padding:0;
@@ -168,13 +69,14 @@ body{
 	line-height:1.5em;
 	font-size:1em;
 	overflow-x: hidden;
-	font-family: 'Source Sans Pro';
 }
+
 body,html{
 	height:100%;
 	width:100%;
 	font-size:99%;
 	position: relative;
+	font-family: 'Vazir', sans-serif !important;
 }
 /*Share Common Font Family*/
 #rev_slider h1, #rev_slider_full h1, #rev_slider_video h1, #text_rotator h1, h3, .page_header .page-content h1, .aboutus h4, .events h4, .items > li > a, #error .error h1,
@@ -186,11 +88,6 @@ h2, #about .priorty .about-post h4, .icon_box h4, .contact_address .address h4, 
 .shopping_box h4.price_product, .cart_table .price_product, .cart_table .product-name h4,
 nav.bootsnav .megamenu-content .title{
 	font-family: 'museo_slab700';
-}
-
-p{
-	font-family: 'Roboto', sans-serif;
-	font-size:1em;
 }
 
 ol, ul{
@@ -1030,7 +927,6 @@ nav.navbar.bootsnav ul.nav > li > a{
 	text-transform:uppercase;
 	position:relative;
 	overflow:hidden;
-	font-family: 'Source Sans Pro';
 }
 nav.navbar.bootsnav ul.nav > li > a,
 nav.navbar.bootsnav.navbar-fixed.no-background ul.nav > li > a{
