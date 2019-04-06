@@ -20,7 +20,7 @@ return [
         ],
         [
             'title' => 'پیش ثبت نام',
-            'link' => route('album.index'),
+            'link' => route('enrollment.create'),
         ],
         [
             'title' => 'درباره ما',

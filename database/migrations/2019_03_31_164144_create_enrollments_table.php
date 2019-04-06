@@ -15,13 +15,13 @@ class CreateEnrollmentsTable extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone');
-            $table->string('major');
-            $table->string('grade');
-            $table->string('address');
-            $table->string('description')->nullable();
+            $table->string('first_name', 190);
+            $table->string('last_name', 190);
+            $table->string('phone', 190);
+            $table->string('major', 190);
+            $table->string('grade', 190);
+            $table->string('address', 190);
+            $table->string('description', 1000)->nullable();
             $table->timestamps();
         });
     }

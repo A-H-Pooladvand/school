@@ -251,6 +251,17 @@ class LaratrustTableSeeder extends Seeder
                     ],
                 ]
             ],
+            // Enrollment
+            [
+                'title' => 'پیش ثبت نام',
+                'detail' => [
+                    [
+                        'name' => 'read-enrollment',
+                        'display_name' => 'مشاهده پیش ثبت نام',
+                        'description' => 'توانایی مشاهده پیش ثبت نام'
+                    ],
+                ]
+            ],
             //Album
             [
                 'title' => 'آلبوم تصاویر',
