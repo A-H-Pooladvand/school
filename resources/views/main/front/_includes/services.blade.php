@@ -2,7 +2,7 @@
     <div class="container">
 
         <h2 class="heading heading_space wow fadeInDown">
-            <span>سرویس ها</span>
+            <span>رشته ها</span>
             <span class="divider-left"></span>
         </h2>
 

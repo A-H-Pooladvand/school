@@ -3,7 +3,7 @@
 return [
     'front_menu' => [
         [
-            'title' => 'سرویس ها',
+            'title' => 'رشته ها',
             'link' => route('service.index'),
         ],
         [

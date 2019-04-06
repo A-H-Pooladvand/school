@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 page-content heading_space">
-                    <h1>سرویس ها</h1>
+                    <h1>رشته ها</h1>
                 </div>
             </div>
         </div>

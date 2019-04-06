@@ -24,7 +24,7 @@ class ServiceController extends Controller
                 })->paginate(9, ["id", "title", "summary", "image", "created_at"]);
         });
 
-        $this->seo()->setTitle('سرویس ها');
+        $this->seo()->setTitle('رشته ها');
         $this->seo()->setDescription($services[0]['summary']);
 
         return view('service.front.index', compact('services'));
