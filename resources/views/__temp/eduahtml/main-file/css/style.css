@@ -2,23 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Source+Sans+Pro:300,400,600,700');
 
 
-@font-face {
-    font-family: 'museo_slab500';
-    src: url('../fonts/museo_slab_0-webfont.woff2') format('woff2'),
-         url('../fonts/museo_slab_0-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'museo_slab700';
-    src: url('../fonts/museo_slab_1-webfont.woff2') format('woff2'),
-         url('../fonts/museo_slab_1-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 /* CSS Document */
 /*Table of Content
 
@@ -180,12 +163,6 @@ body,html{
 #rev_slider h1, #rev_slider_full h1, #rev_slider_video h1, #text_rotator h1, h3, .page_header .page-content h1, .aboutus h4, .events h4, .items > li > a, #error .error h1,
 .shopping_box h4, .shop_tab .tabs li, .pushmenu .push_nav > li > a > span{
 	font-family: 'museo_slab500';
-}
-h2, #about .priorty .about-post h4, .icon_box h4, .contact_address .address h4, .number-counters .counters-item strong,  #parallax h1,
-.reviews .review_left strong, #error .error h2,
-.shopping_box h4.price_product, .cart_table .price_product, .cart_table .product-name h4,
-nav.bootsnav .megamenu-content .title{
-	font-family: 'museo_slab700';
 }
 
 p{
