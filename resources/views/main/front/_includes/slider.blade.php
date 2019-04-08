@@ -4,7 +4,7 @@
         <ul>
             @foreach($sliders as $slider)
                 <li data-transition="fade">
-                    <img src="{{ image_url($slider->image, 160, 73) }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
+                    <img src="{{ image_url($slider->image) }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
 
                     <div class="tp-caption tp-resizeme slider__title"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"

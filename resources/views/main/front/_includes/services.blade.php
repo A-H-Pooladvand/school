@@ -1,4 +1,4 @@
-<section id="events" class="padding-bottom">
+<section id="about" >
     <div class="container">
 
         <h2 class="heading heading_space wow fadeInDown">
@@ -6,47 +6,18 @@
             <span class="divider-left"></span>
         </h2>
 
-        <div class="row">
-
-            @foreach($services as $service)
-                <div class="col-sm-6 col-md-4">
-                    <div class="events  wow fadeIn" data-wow-delay="300ms">
-
-                        <div class="image">
-                            <img src="{{ image_url($service->image, 36, 25, true) }}" alt="eventss" class="border_radius">
-                        </div>
-
-                        <h4 class="top30">
-                            <a href="{{ route('service.show', $service->id) }}">
-                                {{ $service->title }}
-                            </a>
-                        </h4>
-
-                        <p class="bottom20 margin10">{{ $service->summary }}</p>
-
-                        <div class="clearfix">
-
-                            <ul class="comment pull-right">
-                                <li>
-                                    <a href="#" class="facebook">
-                                        <i class="icon-icons20"></i>
-                                        {{ jdate($service->created_at)->format('Y-m-d') }}
-                                    </a>
-                                </li>
-                            </ul>
-
-                            <ul class="comment pull-left">
-                                <li>
-                                    <a href="#" class="facebook">
-                                        {{ jdate($service->created_at)->ago() }}
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix">
+                        @foreach($services as $service)
+                            <div class="col-sm-4 icon_box text-center wow fadeInUp" data-wow-delay="300ms">
+                                <img src="{{ image_url($service->image, 6,6, true) }}" alt="{{ $service->title }}">
+                                <h4 class="text-capitalize bottom20 margin10">{{ $service->title }}</h4>
+                                <p class="no_bottom">{{ str_limit($service->summary, 90) }}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        </div>
+            </div>
     </div>
 </section>
