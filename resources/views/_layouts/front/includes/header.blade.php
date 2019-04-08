@@ -62,15 +62,15 @@
     <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
         <div class="container">
 
-            <div class="navbar-header pull-left">
+            <div class="navbar-header pull-right">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                     <i class="fa fa-bars"></i>
                 </button>
 
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('_site/images/logo-white.png') }}" alt="logo" class="logo logo-display">
-                    <img src="{{ asset('_site/images/logo.png') }}" class="logo logo-scrolled" alt="">
+                    <img src="{{ image_url('_root/logo-white.png', 10,12,true) }}" alt="logo" class="logo logo-display" style="width: 100%">
+                    <img src="{{ image_url('_root/logo.png', 4,4,true) }}" class="logo logo-scrolled" alt="" style="width: 100%">
                 </a>
 
             </div>
