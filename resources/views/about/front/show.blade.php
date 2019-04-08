@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="page_header padding-top">
+    <section class="page_header padding-top text-center">
         <div class="container">
             <div class="page-content heading_space">
                 <h1>درباره ما</h1>

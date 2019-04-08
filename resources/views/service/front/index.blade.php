@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <section class="page_header padding-top">
+    <section class="page_header padding-top text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 page-content heading_space">

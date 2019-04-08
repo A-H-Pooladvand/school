@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <section class="page_header padding-top">
+    <section class="page_header padding-top text-center">
         <div class="container">
             <div class="heading_space page-content">
                 <h1>{{ $news->title }}</h1>
