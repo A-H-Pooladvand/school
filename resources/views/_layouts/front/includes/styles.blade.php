@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/loader.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('_site/css/append.css') }}">
-<link rel="icon" href="{{ asset('_site/images/favicon.png') }}">
+<link rel="icon" href="{{ image_url('_root/logo.png',2,2,true) }}">
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

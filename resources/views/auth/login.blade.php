@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <main id="login--wrapper">
+    <main id="login--wrapper" style="margin-top: 15rem">
         <div class="auth__wrapper">
             <div class="container position-relative ">
 
@@ -23,7 +23,7 @@
                                 <div class="form-group-lg form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
                                     <div>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="EMAIL">
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="ایمیل">
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -36,7 +36,7 @@
                                 <div class="form-group-lg form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
                                     <div>
-                                        <input id="password" type="password" class="form-control" name="password" required placeholder="PASSWORD">
+                                        <input id="password" type="password" class="form-control" name="password" required placeholder="رمز عبور">
 
                                         @if ($errors->has('password'))
                                             <span class="help-block">
@@ -50,7 +50,7 @@
                                     <div>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>Remember me</span>
+                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> <span>مرا بخاطر بسپار</span>
                                             </label>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
 
                                 <div class="form-group">
                                     <div>
-                                        <button class="btn btn-round btn-b btn-block">Login</button>
+                                        <button class="btn btn-round btn-b btn-block">ورود</button>
                                         {{--<hr>--}}
                                         {{--<a class="btn btn-link" href="{{ route('password.request') }}">رمز عبور خود را فراموش کرده اید؟</a>--}}
                                     </div>
