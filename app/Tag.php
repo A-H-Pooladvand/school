@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * @property mixed $blogs
@@ -14,7 +15,7 @@ class Tag extends Model
     /**
      * Get all of the news that are assigned this tag.
      */
-    public function news()
+    public function news(): MorphToMany
     {
         return $this->morphedByMany(News::class, 'taggable');
     }
@@ -22,19 +23,19 @@ class Tag extends Model
     /**
      * Get all of the notifications that are assigned this tag.
      */
-    public function notifications()
+    public function notifications(): MorphToMany
     {
         return $this->morphedByMany(Notification::class, 'taggable');
     }
     /**
      * Get all of the notifications that are assigned this tag.
      */
-    public function albums()
+    public function albums(): MorphToMany
     {
         return $this->morphedByMany(Album::class, 'taggable');
     }
 
-    public function pages()
+    public function pages(): MorphToMany
     {
         return $this->morphedByMany(Page::class, 'taggable');
     }

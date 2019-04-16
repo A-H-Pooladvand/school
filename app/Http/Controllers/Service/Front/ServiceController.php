@@ -14,14 +14,14 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $page = $request->has('page') ? $request->query('page') : 1;
-        $services = Cache::remember("_front_services_index_{$page}", 1, function () {
+        $services = Cache::remember("_front_services_index_{$page}", 1, static function () {
 
             return Service::latest()
                 ->where('status', 'publish')
                 ->where('publish_at', '<=', Carbon::now())
-                ->where(function (Builder $service) {
+                ->where(static function (Builder $service) {
                     $service->whereNull('expire_at')->orWhere('expire_at', '>=', now());
-                })->paginate(9, ["id", "title", "summary", "image", "created_at"]);
+                })->paginate(9, ['id', 'title', 'summary', 'image', 'created_at']);
         });
 
         $this->seo()->setTitle('رشته ها');
@@ -32,10 +32,10 @@ class ServiceController extends Controller
 
     public function show($id)
     {
-        $service = Service::with('tags', 'files')
+        $service = Service::with('tags', 'files', 'categories')
             ->where('status', 'publish')
             ->where('publish_at', '<=', now())
-            ->where(function (Builder $service) {
+            ->where(static function (Builder $service) {
                 $service->whereNull('expire_at')->orWhere('expire_at', '>=', now());
             })->find($id);
 

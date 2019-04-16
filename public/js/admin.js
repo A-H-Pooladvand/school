@@ -15111,7 +15111,7 @@ $(function () {
     */
     var firstMultiMedia = true;
     var $multimedia_input = $('.lfm--multimedia-input');
-    $multimedia_input.filemanager('file');
+    $multimedia_input.filemanager('image');
     setMultimediaButton();
 
     // Set attributes for the <a> tag

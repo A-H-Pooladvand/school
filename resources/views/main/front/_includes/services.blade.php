@@ -12,7 +12,7 @@
                     @foreach($services as $service)
                         <div class="col-sm-4 icon_box text-center wow fadeInUp" data-wow-delay="300ms">
                             <a href="{{ route('service.show', $service->id) }}">
-                                <img src="{{ image_url($service->image, 6,6, true) }}" alt="{{ $service->title }}">
+                                <img src="{{ image_url($service->image, 12,12, true) }}" alt="{{ $service->title }}">
                             </a>
                             <a href="{{ route('service.show', $service->id) }}">
                                 <h4 class="text-capitalize bottom20 margin10">{{ $service->title }}</h4>

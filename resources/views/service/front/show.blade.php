@@ -28,7 +28,7 @@
                         </a>
                     </div>
 
-                    <p>{{ $service->content }}</p>
+                    <p>{!! $service->content !!}</p>
 
                 </div>
                 <aside class="col-sm-4 wow fadeIn" data-wow-delay="400ms">
@@ -54,7 +54,17 @@
                         <ul class="tags">
 
                             @foreach($service->tags as $tag)
-                                <li><a href="#">{{ $tag->title }}</a></li>
+                                <li><a href="{{ route('tag.index', $tag->slug) }}">{{ $tag->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="bottom20">دسته ها</h3>
+                        <ul class="tags">
+
+                            @foreach($service->categories as $category)
+                                <li><a href="{{ route('category.index', $category->id) }}">{{ $category->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -52,7 +52,7 @@ class CategoryController extends Controller
     {
         $category = Category::with('parent')->where('category_type', Album::class)->findOrFail($id);
 
-        return view('album.admin.category.show', compact('category', 'categories'));
+        return view('album.admin.category.show', compact('category'));
     }
 
     public function edit($id)
@@ -100,7 +100,7 @@ class CategoryController extends Controller
                 continue;
             }
 
-            if ($category->news->count()) {
+            if ($category->albums->count()) {
                 $errors['delete_errors'][] = "دسته {$category->title} به ماژول آلبوم متصل است و حذف نشد.<br>";
                 continue;
             }

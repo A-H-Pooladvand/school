@@ -20,7 +20,7 @@
                         <span class="divider-left"></span>
                     </h2>
                     <h4 class="bottom25">{{ $about->summary }}</h4>
-                    <p class="bottom25">{{ $about->content }}</p>
+                    <p class="bottom25">{!! $about->content !!}</p>
                 </div>
 
                 <div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">

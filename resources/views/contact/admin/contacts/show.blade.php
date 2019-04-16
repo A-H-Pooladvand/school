@@ -34,7 +34,7 @@
 
         <tr>
             <th>محتوای پیام</th>
-            <td>{{ $contact->content }}</td>
+            <td>{!!  $contact->content  !!}</td>
         </tr>
 
         <tr>

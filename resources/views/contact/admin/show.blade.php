@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <p class="well">{!! $contact->content !!}</p>
+    <p class="well">{!! $contact->content ?? '' !!}</p>
 
 @stop
 

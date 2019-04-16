@@ -21,7 +21,11 @@
                         <div class="info_label">
                             <span class="icony"><i class="icon-users3"></i></span>
                             <p>دسته</p>
-                            <h5>Software Training / Web Coures</h5>
+                            <h5>
+                                <a href="{{ route('category.index', $notification->categories[0]->id) }}">
+                                    {{ $notification->categories[0]->title }}
+                                </a>
+                            </h5>
                         </div>
 
                         <div class="info_label">
@@ -34,7 +38,7 @@
 
                     </div>
                     <h3 class="top30 bottom20">{{ $notification->title }}</h3>
-                    <p>{{ $notification->content }}</p>
+                    <p>{!! $notification->content !!}</p>
                 </div>
 
                 <aside class="col-sm-4 wow fadeIn" data-wow-delay="400ms">
@@ -60,7 +64,17 @@
                         <ul class="tags">
 
                             @foreach($notification->tags as $tag)
-                                <li><a href="#">{{ $tag->title }}</a></li>
+                                <li><a href="{{ route('tag.index', $tag->slug) }}">{{ $tag->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="bottom20">دسته ها</h3>
+                        <ul class="tags">
+
+                            @foreach($notification->categories as $category)
+                                <li><a href="{{ route('category.index', $category->id) }}">{{ $category->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -24,13 +24,13 @@
                         <ul class="comment margin10">
                             <li><a href="#">{{ jdate($news->created_at)->format('Y-m-d') }}</a></li>
                         </ul>
-                        <p class="margin10">{{ $news->content }}</p>
+                        <p class="margin10">{!!  $news->content  !!}</p>
 
                     </article>
                 </div>
                 <div class="col-md-3 col-sm-4 wow fadeIn" data-wow-delay="400ms">
 
-                    <aside class="sidebar bg_grey border-radius" data-wow-delay="400ms">
+                    <aside class=" wow fadeIn" data-wow-delay="400ms">
                         <div class="widget heading_space">
                             <h3 class="bottom20">مطالب مرتبط</h3>
 
@@ -53,7 +53,17 @@
                             <ul class="tags">
 
                                 @foreach($news->tags as $tag)
-                                    <li><a href="#">{{ $tag->title }}</a></li>
+                                    <li><a href="{{ route('tag.index', $tag->slug) }}">{{ $tag->title }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="bottom20">دسته ها</h3>
+                            <ul class="tags">
+
+                                @foreach($news->categories as $category)
+                                    <li><a href="{{ route('category.index', $category->id) }}">{{ $category->title }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

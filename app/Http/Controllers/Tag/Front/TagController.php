@@ -12,7 +12,7 @@ class TagController extends Controller
 {
     public function index($slug)
     {
-        $tag = Tag::where('slug', $slug)->first();
+        $tag = Tag::where('slug', $slug)->firstOrFail();
 
         $this->seo()->setTitle($tag->title);
         $this->seo()->setDescription($tag->title);
@@ -20,18 +20,21 @@ class TagController extends Controller
         $news = $tag->news()
             ->where('status', 'publish')
             ->where('publish_at', '<=', Carbon::now())
-            ->where(function (Builder $news) {
-                $news->whereNull('expire_at')
+            ->where(static function (Builder $news) {
+                return $news->whereNull('expire_at')
                     ->orWhere('expire_at', '>=', now());
-            })->get(["id", "title", "summary", "image", "created_at"]);
+            })
+            ->get(['id', 'title', 'summary', 'image', 'created_at']);
 
         $notifications = $tag->notifications()
             ->where('status', 'publish')
             ->where('publish_at', '<=', Carbon::now())
-            ->where(function (Builder $notification) {
-                $notification->whereNull('expire_at')
+            ->where(static function (Builder $notification) {
+                return $notification->whereNull('expire_at')
                     ->orWhere('expire_at', '>=', now());
-            })->get(["id", "title", "summary", "image", "created_at"]);
+            })
+            ->get(['id', 'title', 'summary', 'image', 'created_at']);
+
 
         $albums = $tag->albums()->get();
 

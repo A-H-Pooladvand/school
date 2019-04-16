@@ -61,7 +61,7 @@ class CategoryController extends Controller
 
         $form = [
             'action' => route('admin.service.category.update', $category['id']),
-            'method' => 'put'
+            'method' => 'put',
         ];
 
         $categories = Category::with('children')->where([
@@ -95,7 +95,7 @@ class CategoryController extends Controller
 
         foreach ($cats as $i => $category) {
 
-            if ( ! $category->children->isEmpty()) {
+            if (! $category->children->isEmpty()) {
                 $errors['delete_errors'][] = "دسته {$category->title} دارای فرزند بود و پاک نشد.<br>";
                 continue;
             }
@@ -104,7 +104,8 @@ class CategoryController extends Controller
                 $errors['delete_errors'][] = "دسته {$category->title} به ماژول اخبار متصل است و حذف نشد.<br>";
                 continue;
             }
-            $category->delete();
+
+            $category->forceDelete();
         }
 
         return ! empty($errors) ? $errors : 'رکورد به درستی حذف گردید.';
@@ -119,13 +120,14 @@ class CategoryController extends Controller
     private function validator(Request $request, Category $category = null)
     {
         $rules = [
-            'slug' => 'required|max:70|unique:categories,slug,null,id,category_type,' . Service::class . '|regex:/(^[A-Za-z-_ ]+$)+/',
+            'slug' => 'required|max:70|unique:categories,slug,null,id,category_type,'.Service::class.'|regex:/(^[A-Za-z-_ ]+$)+/',
             'title' => 'required|max:70',
             'priority' => 'required|integer|max:255',
         ];
 
-        if ($request->method() === 'PUT')
-            $rules['slug'] = 'required|regex:/(^[A-Za-z-_ ]+$)+/|unique:categories,slug,' . $category->id . ',id,category_type,' . Service::class;
+        if ($request->method() === 'PUT') {
+            $rules['slug'] = 'required|regex:/(^[A-Za-z-_ ]+$)+/|unique:categories,slug,'.$category->id.',id,category_type,'.Service::class;
+        }
 
         $this->validate($request, $rules);
     }
@@ -144,5 +146,4 @@ class CategoryController extends Controller
             'category_type' => Service::class,
         ];
     }
-
 }

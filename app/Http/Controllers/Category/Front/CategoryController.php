@@ -7,6 +7,7 @@ use App\Album;
 use App\Notification;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Service;
 
 class CategoryController extends Controller
 {
@@ -19,16 +20,20 @@ class CategoryController extends Controller
 
         switch ($category->category_type) {
             case News::class:
-                $news = $category->news_query()->paginate(10, ["id", "title", "summary", "image", "created_at"]);
+                $news = $category->news_query()->paginate(10, ['id', 'title', 'summary', 'image', 'created_at']);
                 return view('news.front.index', compact('news'));
                 break;
             case Notification::class:
-                $notifications = $category->notification_query()->paginate(10, ["id", "title", "summary", "image", "created_at"]);
+                $notifications = $category->notification_query()->paginate(10, ['id', 'title', 'summary', 'image', 'created_at']);
                 return view('notification.front.index', compact('notifications'));
                 break;
             case Album::class:
                 $albums = $category->album_query()->paginate(10);
                 return view('album.front.index', compact('albums'));
+                break;
+            case Service::class:
+                $services = $category->album_query()->paginate(10);
+                return view('service.front.index', compact('services'));
                 break;
             default:
                 return abort(404);

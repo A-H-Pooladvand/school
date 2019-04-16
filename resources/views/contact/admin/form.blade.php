@@ -13,7 +13,7 @@
         <div class="form-group">
             @script(tinymce/tinymce.js)
             <label for="input_content" class="control-label">محتوا</label>
-            <textarea name="content" id="input_content" class="tinymce">{{ $contact->content ?? '' }}</textarea>
+            <textarea name="content" id="input_content" class="tinymce">{!! $contact->content ?? '' !!}</textarea>
         </div>
 
     </form>

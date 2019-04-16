@@ -15,7 +15,7 @@
         <div class="container">
 
             <h1 class="mb-1">{{ $contact->title }}</h1>
-            <p>{{ $contact->content }}</p>
+            <p>{!!  $contact->content  !!}</p>
 
             <hr>
 

@@ -45,7 +45,9 @@
                          data-mask_out="x:0;y:0;s:inherit;e:inherit;"
                          data-start="2000"
                     >
-                        <a href="{{ $slider->link }}" class="border_radius btn_common white_border" target="_blank">مشاهده</a>
+                        @if(!empty($slider->link))
+                            <a href="{{ $slider->link }}" class="border_radius btn_common white_border" target="_blank">مشاهده</a>
+                        @endif
                     </div>
 
                 </li>
