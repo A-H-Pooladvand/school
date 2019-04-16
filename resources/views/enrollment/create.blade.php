@@ -4,8 +4,8 @@
 
     <section class="page_header padding-top text-center">
         <div class="container">
-            <div class="page-content heading_space">
-                <h1>پیش ثبت نام</h1>
+            <div class="row heading_space">
+                <div class="col-md-12 page-content heading_space"></div>
             </div>
         </div>
     </section>

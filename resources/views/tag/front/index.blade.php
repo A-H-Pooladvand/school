@@ -4,9 +4,8 @@
 
     <section class="page_header padding-top text-center heading_space">
         <div class="container">
-            <div class="row">
+            <div class="row heading_space">
                 <div class="col-md-12 page-content heading_space">
-                    <h1>هشتگ ها</h1>
                 </div>
             </div>
         </div>

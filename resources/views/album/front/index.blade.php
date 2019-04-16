@@ -4,8 +4,8 @@
 
     <section class="page_header padding-top text-center">
         <div class="container">
-            <div class="heading_space page-content">
-                <h1>البوم تصاویر</h1>
+            <div class="row heading_space">
+                <div class="col-md-12 page-content heading_space"></div>
             </div>
         </div>
     </section>
