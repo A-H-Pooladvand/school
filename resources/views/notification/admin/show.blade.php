@@ -108,7 +108,7 @@
         </div>
 
         <div class="text-right">
-            <a href="{{ route('notification', $notification->id) }}" class="btn btn-info">ویرایش</a>
+            <a href="{{ route('admin.notification.edit', $notification->id) }}" class="btn btn-info">ویرایش</a>
         </div>
 
     </div>

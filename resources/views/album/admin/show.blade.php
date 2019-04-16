@@ -95,11 +95,11 @@
     <div class="form-group helper-block">
 
         <div class="pull-left">
-            {{ Breadcrumbs::render('news-show', $album) }}
+            {{ Breadcrumbs::render('album-show', $album) }}
         </div>
 
         <div class="text-right">
-            <a href="{{ route('admin.news.edit', $album->id) }}" class="btn btn-info">ویرایش</a>
+            <a href="{{ route('admin.album.edit', $album->id) }}" class="btn btn-info">ویرایش</a>
         </div>
 
     </div>
