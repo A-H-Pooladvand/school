@@ -1,6 +1,6 @@
 <script src="{{ asset('_site/js/jquery-2.2.3.js') }}"></script>
 <script src="{{ asset('_site/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('_site/js/bootsnav.js') }}"></script>
+<script src="{{ asset('_site/js/bootsnav.js?1') }}"></script>
 <script src="{{ asset('_site/js/jquery.appear.js') }}"></script>
 <script src="{{ asset('_site/js/jquery-countTo.js') }}"></script>
 <script src="{{ asset('_site/js/jquery.parallax-1.1.3.js') }}"></script>
