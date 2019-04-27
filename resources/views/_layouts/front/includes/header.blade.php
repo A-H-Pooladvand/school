@@ -59,7 +59,7 @@
 </div>
 
 <header>
-    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav" style="background: rgba(0,0,0,0.1)">
         <div class="container">
 
             <div class="navbar-header pull-right">
@@ -69,13 +69,13 @@
                 </button>
 
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ image_url('_root/logo-white.png', 10,12,true) }}" alt="logo" class="logo logo-display" style="width: 100%">
+                    <img src="{{ image_url('_root/logo-white.png', 14,16,true) }}" alt="logo" class="logo logo-display" style="width: 125px; position:absolute; top: 0; right: 15px">
                     <img src="{{ image_url('_root/logo.png', 4,4,true) }}" class="logo logo-scrolled" alt="" style="width: 100%">
                 </a>
 
             </div>
 
-            <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="collapse navbar-collapse" id="navbar-menu" style="margin-right: 100px">
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOut">
                     @foreach($_header_front_menu as $menu)
                         <li>

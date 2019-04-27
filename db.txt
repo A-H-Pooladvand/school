@@ -1,0 +1,4 @@
+Database:	maedehsch_db
+Host:		localhost
+Username:	maedehsch_usr
+Password:	yhwDwWaO8
