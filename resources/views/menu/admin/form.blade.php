@@ -15,7 +15,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="input_title" class="control-label">عنوان</label>
-                        <input id="input_title" name="menus_title[]" type="text" class="form-control" value="{{ $menu['title'] ?? '' }}">
+                        <input id="input_title" name="menus_title[]" type="text" class="form-control input-sm" value="{{ $menu['title'] ?? '' }}">
                         <input name="menus_id[]" type="hidden" value="{{ $menu->page_id }}">
                     </div>
                 </div>
@@ -23,14 +23,14 @@
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="input_priority" class="control-label">اولویت</label>
-                        <input id="input_priority" name="menus_priority[]" type="number" class="form-control text-center" value="{{ $menu['priority'] ?? '' }}">
+                        <input id="input_priority" name="menus_priority[]" type="number" class="form-control input-sm text-center" value="{{ $menu['priority'] ?? '' }}">
                     </div>
                 </div>
 
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="input_link" class="control-label">لینک</label>
-                        <input dir="ltr" id="input_link" name="menus_link[]" type="text" readonly class="form-control" value="{{ $menu['link'] ?? '' }}">
+                        <input dir="ltr" id="input_link" name="menus_link[]" type="text" readonly class="form-control input-sm" value="{{ $menu['link'] ?? '' }}">
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="input_title" class="control-label">عنوان</label>
-                        <input id="input_title" name="pages_title[]" type="text" class="form-control">
+                        <input id="input_title" name="pages_title[]" type="text" class="form-control input-sm">
                         <input name="pages_id[]" type="hidden" value="{{ $page->id }}">
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="input_link" class="control-label">لینک</label>
-                        <input dir="ltr" id="input_link" name="pages_link[]" type="text" readonly class="form-control" value="{{ route('page.show', $page->slug) }}">
+                        <input dir="ltr" id="input_link" name="pages_link[]" type="text" readonly class="form-control input-sm" value="{{ DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR.$page->slug }}">
                     </div>
                 </div>
 

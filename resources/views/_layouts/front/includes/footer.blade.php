@@ -1,5 +1,19 @@
 <footer class="padding-top">
     <div class="container">
+
+        <p>
+            <i class="fa fa-contao fa-fw"></i>
+            {{ $_footer_setting->address }}
+        </p>
+        <p>
+            <i class="fa fa-phone fa-fw"></i>
+            {{ $_footer_setting->phone }}
+        </p>
+        <p class="heading_space">
+            <i class="fa fa-envelope fa-fw"></i>
+            {{ $_footer_setting->email }}
+        </p>
+
         <div class="row">
 
             <div class="col-md-4 col-sm-4 footer_panel bottom25">
@@ -24,7 +38,9 @@
                 </h3>
                 <ul class="links">
                     @foreach($_footer_latest_news as $news)
-                        <li class="w-100"><a href="{{ route('news.show', $news->id) }}"><i class="icon-chevron-small-right"></i>{{ $news->title }}</a></li>
+                        <li class="w-100"><a href="{{ route('news.show', $news->id) }}">
+                                <i class="icon-chevron-small-right"></i>{{ $news->title }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -36,7 +52,9 @@
                 </h3>
                 <ul class="links">
                     @foreach($_footer_latest_notifications as $item)
-                        <li class="w-100"><a href="{{ route('notification.show', $item->id) }}"><i class="icon-chevron-small-right"></i>{{ $item->title }}</a></li>
+                        <li class="w-100"><a href="{{ route('notification.show', $item->id) }}">
+                                <i class="icon-chevron-small-right"></i>{{ $item->title }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

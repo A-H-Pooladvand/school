@@ -1,5 +1,5 @@
-<section id="parallax" class="parallax">
-    <div class="container">
+<section class="parallax" id="parallax" style="background: url({{ $setting->enrollment_background }})no-repeat">
+    <div class="container" style="margin: 3rem auto">
         <div class="row">
             <div class="col-md-12 text-center wow bounceIn">
                 <h2>آیا میخواهید فرزند خود را پیش ثبت نام کنید؟</h2>

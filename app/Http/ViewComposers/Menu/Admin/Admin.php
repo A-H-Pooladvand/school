@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amirhossein
- * Date: 2/6/2018
- * Time: 10:23 PM
- */
 
 return [
     // Dashboard
@@ -19,6 +13,11 @@ return [
                 'link' => route('home'),
                 'permission' => 'admin-panel',
                 'target' => '_blank',
+            ],
+            [
+                'title' => 'تنظیمات',
+                'link' => route('admin.setting.edit'),
+                'permission' => 'admin-panel',
             ],
         ],
     ],
@@ -216,12 +215,7 @@ return [
                 'title' => 'مدیریت منو',
                 'link' => route('admin.menu.create'),
                 'permission' => 'create-menu',
-            ],
-            [
-                'title' => 'لیست منو ها',
-                'link' => route('admin.menu.index'),
-                'permission' => 'read-menu',
-            ],
+            ]
         ],
     ],
     // Tags

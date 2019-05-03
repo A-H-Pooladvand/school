@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class MenuController extends Controller
 {
     public function index(Request $request)
     {

@@ -16,17 +16,17 @@
                 <div class="pull-left">
 
                     <span class="info">
-                        <a href="#"> سوالی دارید؟</a>
+                        <a href="{{ $_header_font_setting->telegram }}"> سوالی دارید؟</a>
                     </span>
 
                     <span class="info">
                         <i class="icon-phone2" style="padding-right: .5rem"></i>
-                        021-44249559
+                        {{ $_header_font_setting->phone }}
                     </span>
 
                     <span class="info">
                         <i class="icon-mail" style="padding-right: .5rem"></i>
-                        info@maedehsch.ir
+                        {{ $_header_font_setting->email }}
                     </span>
 
                 </div>
@@ -34,20 +34,26 @@
                 <ul class="social_top pull-right">
 
                     <li>
-                        <a href="#">
-                            <i class="fa fa-facebook"></i>
+                        <a href="{{ $_header_font_setting->instagram }}">
+                            <i class="fa fa-instagram"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="{{ $_header_font_setting->telegram }}">
+                            <i class="fa fa-telegram"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ $_header_font_setting->twitter }}">
                             <i class="icon-twitter4"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#">
-                            <i class="icon-google"></i>
+                        <a href="{{ $_header_font_setting->linkedin }}">
+                            <i class="icon-linkedin"></i>
                         </a>
                     </li>
 
@@ -79,7 +85,7 @@
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOut">
                     @foreach($_header_front_menu as $menu)
                         <li>
-                            <a href="{{ $menu['link'] }}">{{ $menu['title'] }}</a>
+                            <a href="{{ \request()->root() . $menu['link'] }}">{{ $menu['title'] }}</a>
                         </li>
                     @endforeach
                 </ul>

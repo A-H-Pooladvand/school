@@ -29,24 +29,24 @@
                     <div class="address">
                         <i class="icon icon-map-pin border_radius"></i>
                         <h4>آدرس</h4>
-                        <p>ستارخان - خیابان خسرو جنوبی (صادقی پور) - 27 غربی - پلاک 5</p>
+                        <p>{{ $setting->address }}</p>
                     </div>
 
                     <div class="address">
                         <i class="icon icon-mail border_radius"></i>
                         <h4>ایمیل</h4>
-                        <p><a href="mailto:info@maedehsch.ir">info@maedehsch.ir</a></p>
+                        <p><a href="mailto:info@maedehsch.ir">{{ $setting->email }}</a></p>
                     </div>
 
                     <div class="address">
                         <i class="icon icon-phone4 border_radius"></i>
                         <h4>شماره تماس</h4>
-                        <p>021-44249559</p>
+                        <p>{{ $setting->phone }}</p>
                     </div>
 
                 </div>
                 <div class="col-md-8 fadeInRight" data-wow-delay="4500ms">
-                    <h2 class="heading heading_space">میتوانید با فرم زیر با ما تماس بگیرید<span class="divider-left"></span></h2>
+                    <h2 class="heading heading_space">جهت ارتباط با هنرستان فرم زیر را تکمیل نمایید<span class="divider-left"></span></h2>
                     <form class="form-inline findus" method="POST" action="{{ route('contact.store') }}">
                         {{ csrf_field() }}
 

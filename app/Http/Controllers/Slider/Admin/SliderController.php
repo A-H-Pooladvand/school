@@ -19,7 +19,7 @@ class SliderController extends Controller
         $sliders = Slider::select('id', 'title', 'link', 'created_at', 'updated_at');
 
         $sliders = $this->getGrid($request)->items($sliders);
-        $sliders['rows'] = $sliders['rows']->each(function ($item) {
+        $sliders['rows'] = $sliders['rows']->each(static function ($item) {
             $item->start_at_farsi = $item->start_at_fa;
         });
 
@@ -33,7 +33,7 @@ class SliderController extends Controller
         return view('slider.admin.form', compact('form'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): array
     {
         $this->validate($request, $this->validator());
 
@@ -57,14 +57,14 @@ class SliderController extends Controller
 
         $form = [
             'action' => route('admin.slider.update', $slider['id']),
-            'method' => 'put'
+            'method' => 'put',
         ];
 
 //        return image_url($slider->image ?? '', 37,23,true);
-        return view('slider.admin.form', compact('provinces', 'form', 'slider', 'categories'));
+        return view('slider.admin.form', compact('form', 'slider'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): array
     {
         #dd($request->all());
 
@@ -84,28 +84,27 @@ class SliderController extends Controller
         $ids = explode(',', $id);
 
         Slider::whereIn('id', $ids)->delete();
-
     }
 
     // Methods
 
-    private function validator()
+    private function validator(): array
     {
         $rules = [
-            'title' => 'required|max:100',
+            'title' => 'nullable|max:100',
             'description' => 'nullable|max:1000',
             'link' => 'nullable|url|max:1000',
             'image' => 'required',
         ];
 
-        if (request()->method() === 'PUT')
+        if (request()->method() === 'PUT') {
             $rules['image'] = 'nullable';
+        }
 
         return $rules;
     }
 
-
-    private function fields(Request $request, Slider $slider = null)
+    private function fields(Request $request, Slider $slider = null): array
     {
         return [
             'user_id' => Auth::id(),

@@ -1,8 +1,6 @@
 <?php
 
 use App\Menu;
-use App\Tag;
-use App\Category;
 use Illuminate\Database\Seeder;
 
 class MenuTableSeeder extends Seeder
@@ -16,50 +14,57 @@ class MenuTableSeeder extends Seeder
     {
         $menus = [
             [
+                'title' => 'صفحه اصلی',
+                'link' =>  '/',
+                'priority' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'title' => 'رشته ها',
-                'link' => route('service.index'),
+                'link' =>  parse_url(route('service.index'))['path'],
                 'priority' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'اطلاعیه ها',
-                'link' => route('notification.index'),
+                'link' =>  parse_url(route('notification.index'))['path'],
                 'priority' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'اخبار',
-                'link' => route('news.index'),
+                'link' =>  parse_url(route('news.index'))['path'],
                 'priority' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'البوم تصاویر',
-                'link' => route('album.index'),
+                'link' =>  parse_url(route('album.index'))['path'],
                 'priority' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'پیش ثبت نام',
-                'link' => route('enrollment.create'),
+                'link' =>  parse_url(route('enrollment.create'))['path'],
                 'priority' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'درباره ما',
-                'link' => route('about.show'),
+                'link' =>  parse_url(route('about.show'))['path'],
                 'priority' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'title' => 'تماس با ما',
-                'link' => route('contact.show'),
+                'link' =>  parse_url(route('contact.show'))['path'],
                 'priority' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Menu\Admin;
 
 use App\Page;
 use DB;
-use Auth;
 use App\Menu;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Category\JEasyUi;
 use App\Http\Helpers\Multimedia\Multimedia;
-use App\Http\Helpers\DateConverter\DateConverter;
 
 class MenuController extends Controller
 {

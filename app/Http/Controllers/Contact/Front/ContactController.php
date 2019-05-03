@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Contact\Front;
 use App\Contact;
 use App\ContactUs;
 use App\Http\Controllers\Controller;
+use App\Setting;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function show()
     {
-        $contact = ContactUs::first();
+        $contact = ContactUs::firstOrFail();
+
+        $setting = Setting::first();
 
         $this->seo()->setTitle('تماس با ما');
         $this->seo()->setDescription($contact->title);
 
-        return view('contact.front.show', compact('contact'));
+        return view('contact.front.show', compact('contact', 'setting'));
     }
 
     public function store(Request $request)

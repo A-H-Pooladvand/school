@@ -9,7 +9,7 @@ class AboutController extends Controller
 {
     public function show()
     {
-        $about = About::first();
+        $about = About::firstOrFail();
 
         $this->seo()->setTitle($about->title);
         $this->seo()->setDescription($about->summary);
