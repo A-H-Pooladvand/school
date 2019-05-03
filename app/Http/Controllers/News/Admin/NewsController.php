@@ -24,11 +24,12 @@ class NewsController extends Controller
         $news = News::select(['id', 'status', 'title', 'summary', 'created_at', 'updated_at']);
 
         $news = $this->getGrid($request)->items($news);
-        $news['rows'] = $news['rows']->each(function ($item) {
+        $news['rows'] = $news['rows']->each(static function ($item) {
             $item->status_farsi = $item->status_fa;
             $item->created_at_farsi = $item->created_at_fa;
             $item->updated_at_farsi = $item->updated_at_fa;
         });
+
         return $news;
     }
 

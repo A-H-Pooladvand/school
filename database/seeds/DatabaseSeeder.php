@@ -1,5 +1,6 @@
 <?php
 
+use App\Menu;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
         $this->call(EnrollmentTableSeeder::class);
+        $this->call(MenuTableSeeder::class);
     }
 }

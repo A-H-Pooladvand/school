@@ -13,7 +13,7 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('news', static function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedMediumInteger('user_id');
             $table->enum('status', ['publish', 'draft'])->default('publish')->comment('منتشر شده یا پیشنویس');

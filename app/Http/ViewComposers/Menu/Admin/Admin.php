@@ -19,8 +19,8 @@ return [
                 'link' => route('home'),
                 'permission' => 'admin-panel',
                 'target' => '_blank',
-            ]
-        ]
+            ],
+        ],
     ],
     // User
     [
@@ -32,24 +32,24 @@ return [
             [
                 'title' => 'افزودن کاربر',
                 'link' => route('admin.user.create'),
-                'permission' => 'create-user'
+                'permission' => 'create-user',
             ],
             [
                 'title' => 'لیست کاربران',
                 'link' => route('admin.user.index'),
-                'permission' => 'read-user'
+                'permission' => 'read-user',
             ],
             [
                 'title' => 'افزودن نقش',
                 'link' => route('admin.role.create'),
-                'permission' => 'create-acl'
+                'permission' => 'create-acl',
             ],
             [
                 'title' => 'لیست نقش ها',
                 'link' => route('admin.role.index'),
-                'permission' => 'read-acl'
-            ]
-        ]
+                'permission' => 'read-acl',
+            ],
+        ],
     ],
     // Slider
     [
@@ -61,14 +61,14 @@ return [
             [
                 'title' => 'افزودن اسلایدر',
                 'link' => route('admin.slider.create'),
-                'permission' => 'create-slider'
+                'permission' => 'create-slider',
             ],
             [
                 'title' => 'لیست اسلاید ها',
                 'link' => route('admin.slider.index'),
-                'permission' => 'read-slider'
-            ]
-        ]
+                'permission' => 'read-slider',
+            ],
+        ],
     ],
     // News
     [
@@ -80,24 +80,24 @@ return [
             [
                 'title' => 'افزودن مطلب',
                 'link' => route('admin.news.create'),
-                'permission' => 'create-news'
+                'permission' => 'create-news',
             ],
             [
                 'title' => 'لیست مطالب',
                 'link' => route('admin.news.index'),
-                'permission' => 'read-news'
+                'permission' => 'read-news',
             ],
             [
                 'title' => 'افزودن دسته بندی',
                 'link' => route('admin.news.category.create'),
-                'permission' => 'create-news|edit-news'
+                'permission' => 'create-news|edit-news',
             ],
             [
                 'title' => 'لیست دسته بندی ها',
                 'link' => route('admin.news.category.index'),
-                'permission' => 'create-news|edit-news'
-            ]
-        ]
+                'permission' => 'create-news|edit-news',
+            ],
+        ],
     ],
     // Service
     [
@@ -109,24 +109,24 @@ return [
             [
                 'title' => 'افزودن مطلب',
                 'link' => route('admin.service.create'),
-                'permission' => 'create-service'
+                'permission' => 'create-service',
             ],
             [
                 'title' => 'لیست مطالب',
                 'link' => route('admin.service.index'),
-                'permission' => 'read-service'
+                'permission' => 'read-service',
             ],
             [
                 'title' => 'افزودن دسته بندی',
                 'link' => route('admin.service.category.create'),
-                'permission' => 'create-service|edit-service'
+                'permission' => 'create-service|edit-service',
             ],
             [
                 'title' => 'لیست دسته بندی ها',
                 'link' => route('admin.service.category.index'),
-                'permission' => 'create-service|edit-service'
-            ]
-        ]
+                'permission' => 'create-service|edit-service',
+            ],
+        ],
     ],
     // Notification
     [
@@ -138,24 +138,24 @@ return [
             [
                 'title' => 'افزودن اطلاعیه',
                 'link' => route('admin.notification.create'),
-                'permission' => 'create-notification'
+                'permission' => 'create-notification',
             ],
             [
                 'title' => 'لیست اطلاعیه ها',
                 'link' => route('admin.notification.index'),
-                'permission' => 'read-notification'
+                'permission' => 'read-notification',
             ],
             [
                 'title' => 'افزودن دسته بندی',
                 'link' => route('admin.notification.category.create'),
-                'permission' => 'create-notification|edit-notification'
+                'permission' => 'create-notification|edit-notification',
             ],
             [
                 'title' => 'لیست دسته بندی ها',
                 'link' => route('admin.notification.category.index'),
-                'permission' => 'create-notification|edit-notification'
-            ]
-        ]
+                'permission' => 'create-notification|edit-notification',
+            ],
+        ],
     ],
     // Album
     [
@@ -167,46 +167,63 @@ return [
             [
                 'title' => 'افزودن آلبوم',
                 'link' => route('admin.album.create'),
-                'permission' => 'create-album'
+                'permission' => 'create-album',
             ],
             [
                 'title' => 'لیست آلبوم ها',
                 'link' => route('admin.album.index'),
-                'permission' => 'read-album'
+                'permission' => 'read-album',
             ],
             [
                 'title' => 'افزودن دسته بندی',
                 'link' => route('admin.album.category.create'),
-                'permission' => 'create-album|edit-album'
+                'permission' => 'create-album|edit-album',
             ],
             [
                 'title' => 'لیست دسته بندی ها',
                 'link' => route('admin.album.category.index'),
-                'permission' => 'create-album|edit-album'
-            ]
-        ]
+                'permission' => 'create-album|edit-album',
+            ],
+        ],
     ],
     // Page
-//    [
-//        'title' => 'صفحات',
-//        'icon' => 'fa fa-fw fa-sticky-note',
-//        'link' => '#',
-//        'permission' => 'page',
-//        'sub' => [
-//            [
-//                'title' => 'افزودن صفحه',
-//                'link' => route('admin.page.create'),
-//                'permission' => 'create-page'
-//            ],
-//            [
-//                'title' => 'لیست صفحات',
-//                'link' => route('admin.page.index'),
-//                'permission' => 'read-page'
-//            ]
-//        ]
-//    ],
-    // Book
-
+    [
+        'title' => 'صفحات',
+        'icon' => 'fa fa-fw fa-sticky-note',
+        'link' => '#',
+        'permission' => 'page',
+        'sub' => [
+            [
+                'title' => 'افزودن صفحه',
+                'link' => route('admin.page.create'),
+                'permission' => 'create-page',
+            ],
+            [
+                'title' => 'لیست صفحات',
+                'link' => route('admin.page.index'),
+                'permission' => 'read-page',
+            ],
+        ],
+    ],
+    // Menu
+    [
+        'title' => 'منو',
+        'icon' => 'fa fa-fw fa-bars',
+        'link' => '#',
+        'permission' => 'menu',
+        'sub' => [
+            [
+                'title' => 'مدیریت منو',
+                'link' => route('admin.menu.create'),
+                'permission' => 'create-menu',
+            ],
+            [
+                'title' => 'لیست منو ها',
+                'link' => route('admin.menu.index'),
+                'permission' => 'read-menu',
+            ],
+        ],
+    ],
     // Tags
     [
 
@@ -218,14 +235,14 @@ return [
             [
                 'title' => 'افزودن کلمه کلیدی',
                 'link' => route('admin.tag.create'),
-                'permission' => 'create-tag'
+                'permission' => 'create-tag',
             ],
             [
                 'title' => 'لیست کلمات کلیدی',
                 'link' => route('admin.tag.index'),
-                'permission' => 'read-tag'
-            ]
-        ]
+                'permission' => 'read-tag',
+            ],
+        ],
     ],
     // About
     [
@@ -237,9 +254,9 @@ return [
             [
                 'title' => 'ویرایش درباره ما',
                 'link' => route('admin.about.edit'),
-                'permission' => 'create-about'
+                'permission' => 'create-about',
             ],
-        ]
+        ],
     ],
     // Contact-us
     [
@@ -251,9 +268,9 @@ return [
             [
                 'title' => 'لیست درخواست ها',
                 'link' => route('admin.enrollment.index'),
-                'permission' => 'read-enrollment'
-            ]
-        ]
+                'permission' => 'read-enrollment',
+            ],
+        ],
     ],
     // Contact-us
     [
@@ -265,18 +282,18 @@ return [
             [
                 'title' => 'مشاهده تماس با ما',
                 'link' => route('admin.contact.show', 1),
-                'permission' => 'read-contact'
+                'permission' => 'read-contact',
             ],
             [
                 'title' => 'ویرایش تماس با ما',
                 'link' => route('admin.contact.edit', 1),
-                'permission' => 'edit-about'
+                'permission' => 'edit-about',
             ],
             [
                 'title' => 'پیام ها',
                 'link' => route('admin.contact.contacts.index'),
-                'permission' => 'edit-about'
-            ]
-        ]
-    ]
+                'permission' => 'edit-about',
+            ],
+        ],
+    ],
 ];

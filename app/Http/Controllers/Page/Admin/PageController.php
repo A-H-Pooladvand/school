@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Page\Admin;
 
+use Auth;
+use App\Page;
+use DB;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Multimedia\Multimedia;
-use App\Page;
-use Auth;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -33,13 +34,13 @@ class PageController extends Controller
     {
         $this->validate($request, $this->validator());
 
-        $page = Page::create($this->fields($request));
+        DB::transaction(function () use ($request) {
+            $page = Page::create($this->fields($request));
 
-        Multimedia::createOrUpdate($request, $page->galleries(), 0);
+            Multimedia::createOrUpdate($request, $page->galleries(), 0);
 
-        $tags = $request['tags'];
-
-        $this->tags($tags)->attach($page);
+            $this->tags($request['tags'])->attach($page);
+        });
 
         return ['message' => 'صفحه جدید با موفقیت ثبت شد.'];
     }
@@ -55,30 +56,31 @@ class PageController extends Controller
     {
         $page = Page::with([
             'tags',
-            'galleries'
+            'galleries',
         ])->findOrFail($id);
 
         $form = [
             'action' => route('admin.page.update', $page['id']),
-            'method' => 'put'
+            'method' => 'put',
         ];
 
         return view('page.admin.form', compact('page', 'form'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): array
     {
         $this->validate($request, $this->validator());
 
         $page = Page::findOrFail($id);
 
-        $page->update($this->fields($request));
+        DB::transaction(static function () use ($request, $page) {
 
-        Multimedia::createOrUpdate($request, $page->galleries(), 0);
+            $page->update($this->fields($request, $page));
 
-        $tags = $request['tags'];
+            Multimedia::createOrUpdate($request, $page->galleries(), 0);
 
-        $this->tags($tags)->sync($page);
+            $this->tags($request['tags'])->sync($page);
+        });
 
         return ['message' => 'صفحه جدید با موفقیت ثبت شد.'];
     }
@@ -90,28 +92,36 @@ class PageController extends Controller
         Page::whereIn('id', $ids)->delete();
     }
 
-    // Methods
-
-    private function validator()
+    /**
+     * Validate rules.
+     *
+     * @return array
+     */
+    private function validator(): array
     {
-        return [
+        $rules = [
             'title' => 'required|max:100',
             'slug' => 'required|max:100',
             'content' => 'required',
-            'gallery_type' => 'required',
+            //'gallery_type' => 'required',
         ];
+
+        if (request()->method() === 'POST') {
+            $rules['image'] = 'required';
+        }
+
+        return $rules;
     }
 
-    private function fields(Request $request)
+    private function fields(Request $request, Page $page = null): array
     {
         return [
             'user_id' => Auth::id(),
             'title' => $request['title'],
             'slug' => $request['slug'],
             'content' => $request['content'],
-            'has_comment' => $request['has_comment'] === 'true' ? true : false,
-            'gallery_type' => $request['gallery_type'],
+            //'gallery_type' => $request['gallery_type'],
+            'image' => $request['image'] ?? $page['image'],
         ];
     }
-
 }

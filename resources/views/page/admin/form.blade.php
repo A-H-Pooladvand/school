@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <div dir="ltr" class="bg-info text-primary p-b-0-5 p-t-0-5 p-l-0-5 p-r-0-5">
-                        <strong>http://kalaam.ir/pages/</strong><span id="slug--preview">{{ $page->slug ?? '' }}</span>
+                        <strong>http://maedehsch.ir/pages/</strong><span id="slug--preview">{{ $page->slug ?? '' }}</span>
                     </div>
                 </div>
 
@@ -48,6 +48,37 @@
             <div class="col-sm-4">
 
                 <div class="form-group">
+                    <label for="image" class="control-label">تصویر شاخص</label>
+                    <div class="input-group">
+                <span class="input-group-btn">
+                    <a id="file-manager" data-input="image" data-preview="image-preview" class="btn btn-primary">
+                        <i class="fa fa-picture-o"></i>
+                        <span>انتخاب</span>
+                    </a>
+                </span>
+                        <input id="image" readonly class="form-control" type="text" name="image">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <img id="image-preview" class="thumbnail {{ !empty($news->image) ? '' : 'hidden' }}" width="100%" src="{{ image_url($news->image ?? '', 37,23,true) }}" alt="Main pick">
+                </div>
+
+                @push('scripts')
+                    <script>
+
+                      $('#file-manager').filemanager('image');
+
+                      $(function () {
+                        $('#image-preview').change(function () {
+                          $(this).removeClass('hidden');
+                        });
+                      });
+
+                    </script>
+                @endpush
+
+                {{--<div class="form-group">
                     <label for="input_gallery_type" class="control-label">نوع چیدمان تصاویر</label>
 
                     @component('_components.bootstrap-select--single')
@@ -63,7 +94,7 @@
 
                     @endcomponent
 
-                </div>
+                </div>--}}
 
                 <div class="form-group">
                     @style(selectize/selectize.css)
@@ -87,7 +118,7 @@
 
         </div>
 
-        <div class="lfm--gallery-container">
+        {{--<div class="lfm--gallery-container">
             <div class="form-group">
                 <label for="image" class="control-label">گالری تصاویر</label>
                 <br>
@@ -118,7 +149,7 @@
 
                 </div>
             </div>
-        </div>
+        </div>--}}
 
     </form>
 

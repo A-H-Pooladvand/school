@@ -13,12 +13,12 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('pages', static function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedMediumInteger('user_id');
-            $table->enum('gallery_type', ['none', 'gallery', 'slider'])->comment('تعیین وضعیت نمایش عکس ها | اسلایدشو، گالری، هیچکدام')->default('none');
-            $table->boolean('has_comment')->comment('آیا قابلیت ثبت نظر برای مطلب وجود دارد یا خبر');
+            //$table->enum('gallery_type', ['none', 'gallery', 'slider'])->comment('تعیین وضعیت نمایش عکس ها | اسلایدشو، گالری، هیچکدام')->default('none');
             $table->string('title', 100);
+            $table->string('image', 120);
             $table->string('slug', 100);
             $table->text('content');
             $table->timestamps();

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenuBuilder extends Model
+class Menu extends Model
 {
-    //
+    protected $guarded = ['id'];
 }
