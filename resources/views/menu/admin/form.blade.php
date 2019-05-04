@@ -8,59 +8,71 @@
     <form action="{{ $form['action'] }}" method="post" id="form">
         {{ method_field($form['method'] ?? 'POST') }}
 
+        <div class="alert alert-info">
+            <p>* برای ایجاد منوی والد فقط فیلدهای عنوان و اولویت را تکمیل نمایید</p>
+            <p>* برای تبدیل منوی فرزند به والد در منوی کشویی "منوی والد" همان فرزند را انتخواب نمایید</p>
+        </div>
+
         <div class="row">
 
-            @foreach($menus as $menu)
+            <div class="col-sm-3">
+                <label for="input_title" class="control-label">عنوان</label>
+                <input id="input_title" name="title" type="text" class="form-control" value="{{ $menu->title ?? '' }}">
+            </div>
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="input_title" class="control-label">عنوان</label>
-                        <input id="input_title" name="menus_title[]" type="text" class="form-control input-sm" value="{{ $menu['title'] ?? '' }}">
-                        <input name="menus_id[]" type="hidden" value="{{ $menu->page_id }}">
-                    </div>
-                </div>
+            <div class="clearfix"></div>
 
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="input_priority" class="control-label">اولویت</label>
-                        <input id="input_priority" name="menus_priority[]" type="number" class="form-control input-sm text-center" value="{{ $menu['priority'] ?? '' }}">
-                    </div>
-                </div>
+            <div class="col-sm-3">
+                <label for="input_page_id" class="control-label">صفحه</label>
+                @component('_components.bootstrap-select--single')
+                    @slot('name', 'page_id')
+                    @slot('options')
+                        @foreach($pages as $page)
+                            <option
+                                    {{ !empty($menu) && $menu->page_id === null ? 'disabled' : '' }}
+                                    {{ !empty($menu->page_id) && $menu->page_id === $page->id ? 'selected' : '' }}
+                                    data-link="/pages/{{ $page->slug }}"
+                                    value="{{ $page->id }}"
+                            >
+                                {{ $page->title }}
+                            </option>
+                        @endforeach
+                    @endslot
+                @endcomponent
+            </div>
 
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="input_link" class="control-label">لینک</label>
-                        <input dir="ltr" id="input_link" name="menus_link[]" type="text" readonly class="form-control input-sm" value="{{ $menu['link'] ?? '' }}">
-                    </div>
-                </div>
+            @push('scripts')
+                <script>
+                    $(function () {
 
-            @endforeach
+                        $('#input_page_id').on('change', function () {
+                            var link = $(this).find("option:selected").data('link');
+                            $('#input_link').val(link)
+                        });
+                    })
+                </script>
+            @endpush
 
-            @foreach($pages as $page)
+            <div class="col-sm-3">
+                <label for="input_link" class="control-label">لینک</label>
+                <input id="input_link" dir="ltr" readonly name="link" type="text" class="form-control" value="{{ $menu->link ?? '' }}">
+            </div>
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label for="input_title" class="control-label">عنوان</label>
-                        <input id="input_title" name="pages_title[]" type="text" class="form-control input-sm">
-                        <input name="pages_id[]" type="hidden" value="{{ $page->id }}">
-                    </div>
-                </div>
+            <div class="clearfix"></div>
 
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="input_priority" class="control-label">اولویت</label>
-                        <input id="input_priority" name="pages_priority[]" type="number" class="form-control text-center">
-                    </div>
-                </div>
+            <div class="col-sm-3">
+                <label for="input_priority" class="control-label">اولویت</label>
+                <input id="input_priority" name="priority" type="number" class="form-control" value="{{ $menu->priority ?? '' }}">
+            </div>
 
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="input_link" class="control-label">لینک</label>
-                        <input dir="ltr" id="input_link" name="pages_link[]" type="text" readonly class="form-control input-sm" value="{{ DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR.$page->slug }}">
-                    </div>
-                </div>
-
-            @endforeach
+            <div class="col-sm-3">
+                @component('_components.category--single')
+                    @slot('name', 'parent')
+                    @slot('label', 'منوی والد')
+                    @slot('categories', $menus)
+                    @slot('category', $menu ?? '')
+                @endcomponent
+            </div>
 
         </div>
 
@@ -73,13 +85,13 @@
 
     <div class="form-group helper-block">
 
-        {{--<div class="pull-left">
+        <div class="pull-left">
             @if(!empty($menu))
                 {{ Breadcrumbs::render('menu-edit', $menu) }}
             @else
                 {{ Breadcrumbs::render('menu-create') }}
             @endif
-        </div>--}}
+        </div>
 
         <div class="text-right">
             <button type="button" class="btn btn-info btn-ajax">ذخیره</button>

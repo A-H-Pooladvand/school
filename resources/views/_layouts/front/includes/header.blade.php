@@ -84,11 +84,33 @@
             <div class="collapse navbar-collapse" id="navbar-menu" style="margin-right: 100px">
                 <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOut">
                     @foreach($_header_front_menu as $menu)
-                        <li>
-                            <a href="{{ \request()->root() . $menu['link'] }}">{{ $menu['title'] }}</a>
+                        <li class="dropdown">
+                            <a class="{{ empty($menu['children']) ? '' : 'dropdown-toggle' }}"
+                               data-toggle="dropdown"
+                               href="{{ !empty($menu['link'] ? \request()->root() . $menu['link'] : '') }}">
+                                {{ $menu['title'] }}
+                            </a>
+
+                            @if(!empty($menu['children']))
+                                <ul class="dropdown-menu">
+                                    @foreach($menu['children'] as $child)
+                                        <li><a href="{{ \request()->root() . $menu['link'] }}">{{ $menu['title'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
                         </li>
                     @endforeach
                 </ul>
+
+                {{--<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="course_detail.html">Courses Detail</a></li>
+                    </ul>
+                </li>--}}
+
             </div>
 
         </div>

@@ -212,10 +212,15 @@ return [
         'permission' => 'menu',
         'sub' => [
             [
-                'title' => 'مدیریت منو',
+                'title' => 'ایجاد منو',
                 'link' => route('admin.menu.create'),
                 'permission' => 'create-menu',
-            ]
+            ],
+            [
+                'title' => 'لیست منو ها',
+                'link' => route('admin.menu.index'),
+                'permission' => 'create-menu',
+            ],
         ],
     ],
     // Tags

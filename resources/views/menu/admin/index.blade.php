@@ -14,64 +14,36 @@
     @push('scripts')
         <script>
             $('#dg').iDataGrid({
-                    title: 'لیست اخبار',
-                    url: '{{ route('admin.news.items') }}',
+                    title: 'لیست منوها',
+                    url: '{{ route('admin.menu.items') }}',
                     columns: [[
                         {field: 'checkbox', checkbox: true},
                         {field: 'id', sortable: true, title: 'شناسه', align: 'center'},
                         {
                             field: 'title', sortable: true, width: '200', title: 'عنوان', align: 'center',
                             formatter: function (val, row) {
-                                return '<a href="' + '{{ route('admin.news.index') }}' + '/' + row.id + '" target="_blank">' + val + '</a>';
+                                return '<a href="' + '{{ route('admin.menu.index') }}' + '/' + row.id + '" target="_blank">' + val + '</a>';
                             }
                         },
-                        {field: 'summary', sortable: true, width: '200', title: 'خلاصه', align: 'center'},
-                        {
-                            field: 'status', sortable: true, title: 'وضعیت', align: 'center',
-                            formatter: function (val, row) {
-                                return row.status_farsi;
-                            }
-                        },
-                        {
-                            field: 'created_at', width: 150, sortable: true, title: 'تاریخ ایجاد', align: 'center',
-                            formatter: function (val, row) {
-                                return row.created_at_farsi;
-                            }
-                        },
-                        {
-                            field: 'updated_at', width: 150, sortable: true, title: 'تاریخ ویرایش', align: 'center',
-                            formatter: function (val, row) {
-                                return row.updated_at_farsi;
-                            }
-                        },
+                        {field: 'link', sortable: true, width: '200', title: 'لینک', align: 'left'},
+                        {field: 'priority', sortable: true, width: '200', title: 'اولویت', align: 'center'},
                     ]],
                     toolbar: [
                         {
                             name: 'show',
-                            link: '{{ route('admin.news.index') }}' + '/' + '{id}',
+                            link: '{{ route('admin.menu.index') }}' + '/' + '{id}',
                         },
                         {
                             name: 'edit',
-                            link: '{{ route('admin.news.index') }}' + '/' + 'edit' + '/' + '{id}',
+                            link: '{{ route('admin.menu.index') }}' + '/' + 'edit' + '/' + '{id}',
                         },
                         {
                             name: 'delete',
-                            link: '{{ route('admin.news.index') }}' + '/' + '{id}',
+                            link: '{{ route('admin.menu.index') }}' + '/' + '{id}',
                         },
                     ]
-                },
-                {
-                    filters: {
-                        date: ['created_at', 'updated_at'],
-                        combobox: {
-                            'status': [
-                                {'text': 'همه', 'value': ''},
-                                {'text': 'منتشر شده', 'value': 'publish'},
-                                {'text': 'پیشنویس', 'value': 'draft'},
-                            ]
-                        }
-                    }
-                });
+                }
+            );
         </script>
     @endpush
 

@@ -16,7 +16,6 @@ class JEasyUi
         $cats = [];
 
         foreach ($categories as $key => $category) {
-
             $cats[] = [
                 'id' => $category['id'],
                 'text' => $category['title'],

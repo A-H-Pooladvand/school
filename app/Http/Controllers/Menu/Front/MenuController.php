@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers\News\Front;
 
-use App\Http\Controllers\Controller;
-use App\News;
 use Cache;
+use App\News;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class MenuController extends Controller
 {
     public function index(Request $request)
     {
         $page = $request->has('page') ? $request->query('page') : 1;
-        $news = Cache::remember("_front_news_index_{$page}", 1, function () {
+        $news = Cache::remember("_front_news_index_{$page}", 1, static function () {
 
             return News::latest()
                 ->where('status', 'publish')
                 ->where('publish_at', '<=', Carbon::now())
-                ->where(function (Builder $news) {
+                ->where(static function (Builder $news) {
                     $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
-                })->paginate(9, ["id", "title", "summary", "image", "created_at"]);
+                })->paginate(9, ['id', 'title', 'summary', 'image', 'created_at']);
         });
 
         $this->seo()->setTitle('اخبار');
@@ -35,7 +35,7 @@ class MenuController extends Controller
         $news = News::with('tags', 'galleries', 'files')
             ->where('status', 'publish')
             ->where('publish_at', '<=', now())
-            ->where(function (Builder $news) {
+            ->where(static function (Builder $news) {
                 $news->whereNull('expire_at')->orWhere('expire_at', '>=', now());
             })->find($id);
 

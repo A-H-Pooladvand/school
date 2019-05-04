@@ -106,7 +106,7 @@ class Grid extends Filter
             return $query->orderBy($this->sort, $this->order);
         }
 
-        return $query->latest();
+        return $query->orderBy('id', 'desc');
     }
 
 }

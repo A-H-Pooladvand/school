@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Menu\Admin;
 
 use App\Page;
-use DB;
 use App\Menu;
-use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Category\JEasyUi;
-use App\Http\Helpers\Multimedia\Multimedia;
 
 class MenuController extends Controller
 {
@@ -20,116 +17,65 @@ class MenuController extends Controller
 
     public function items(Request $request)
     {
-        $menu = Menu::select(['id', 'status', 'title', 'summary', 'created_at', 'updated_at']);
+        $menu = Menu::select('id', 'title', 'priority', 'link');
 
-        $menu = $this->getGrid($request)->items($menu);
-        $menu['rows'] = $menu['rows']->each(static function ($item) {
-            $item->status_farsi = $item->status_fa;
-            $item->created_at_farsi = $item->created_at_fa;
-            $item->updated_at_farsi = $item->updated_at_fa;
-        });
-
-        return $menu;
+        return $this->getGrid($request)->items($menu);
     }
 
     public function create()
     {
         $form = ['action' => route('admin.menu.store')];
 
-        $menus = Menu::get();
+        $menus = Menu::with('children')->whereNull('parent_id')->get()->toArray();
 
-        $pagesID = $menus->where('page_id', '<>', null)->pluck('page_id');
+        $menus = JEasyUi::jsonFormat($menus);
+
+        $pagesID = Menu::whereNotNull('page_id')->pluck('page_id');
 
         $pages = Page::whereNotIn('id', $pagesID)->get();
 
         return view('menu.admin.form', compact('form', 'menus', 'pages'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): array
     {
         $this->validate($request, $this->validator());
 
-        $menus = [];
-
-        foreach ($request['menus_title'] as $index => $title) {
-            $menus[] = [
-                'page_id' => $request['menus_id'][$index],
-                'title' => $title,
-                'priority' => $request['menus_priority'][$index],
-                'link' => $request['menus_link'][$index],
-            ];
-        }
-
-        if (! empty($request['pages_title'])) {
-            foreach ($request['pages_title'] as $index => $title) {
-                $menus[] = [
-                    'page_id' => $request['pages_id'][$index],
-                    'title' => $title,
-                    'priority' => $request['pages_priority'][$index],
-                    'link' => $request['pages_link'][$index],
-                ];
-            }
-        }
-
-        DB::transaction(static function () use ($menus) {
-            Menu::truncate();
-            Menu::insert($menus);
-        });
+        Menu::create($this->fields($request));
 
         return ['message' => 'مطلب جدید با موفقیت ثبت شد.'];
     }
 
     public function show($id)
     {
-        $menu = Menu::with('tags', 'user', 'author')->findOrFail($id);
+        $menu = Menu::with('children')->findOrFail($id);
 
         return view('menu.admin.show', compact('menu'));
     }
 
     public function edit($id)
     {
-        $menu = Menu::with([
-            'tags',
-            'galleries',
-            'categories',
-            'files',
-        ])->findOrFail($id);
+        $menu = Menu::with('children')->findOrFail($id);
 
         $form = [
             'action' => route('admin.menu.update', $menu['id']),
             'method' => 'put',
         ];
 
-        $categories = Category::with('children')->where([
-            'category_type' => Menu::class,
-            'parent_id' => null,
-        ])->get()->toArray();
+        $menus = Menu::with('children')->whereNull('parent_id')->get()->toArray();
 
-        $categories = JEasyUi::jsonFormat($categories);
+        $menus = JEasyUi::jsonFormat($menus);
 
-        $category_ids = implode(',', $menu->categories->pluck('id')->toArray());
+        $pages = Page::get();
 
-        return view('menu.admin.form', compact('menu', 'form', 'categories', 'category_ids'));
+        return view('menu.admin.form', compact('menu', 'form', 'menus', 'pages'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, $this->validator());
-
-        DB::transaction(function () use ($request, $id) {
-
-            $menu = Menu::find($id);
-
-            $menu->update($this->fields($request, $menu));
-
-            Multimedia::createOrUpdate($request, $menu->galleries(), 0);
-
-            Multimedia::createOrUpdate($request, $menu->files(), 0, 'multimedia');
-
-            $this->tags($request->tags)->sync($menu);
-
-            $menu->categories()->sync($request->categories);
-        });
+        $menu = Menu::find($id);
+        $menu->update($this->fields($request, $menu));
 
         return ['message' => 'مطلب جدید با موفقیت ثبت شد.'];
     }
@@ -146,27 +92,21 @@ class MenuController extends Controller
     private function validator(): array
     {
         $rules = [
-            'pages_title.*' => 'required|max:40',
-            'pages_priority.*' => 'required',
-            'pages_link.*' => 'required|max:250',
-            'menus_title.*' => 'required|max:40',
-            'menus_priority.*' => 'required',
-            'menus_link.*' => 'required|max:250',
+            'title' => 'required|max:40',
+            'priority' => 'required|max:250',
         ];
-
-        if (request()->method() === 'PUT') {
-            $rules['image'] = 'nullable';
-        }
 
         return $rules;
     }
 
-    private function fields(Request $request, $menu = null): array
+    private function fields(Request $request, Menu $menu = null): array
     {
         return [
             'title' => $request['title'],
+            'parent_id' => (int) $request['parent'] === (empty($menu->id) ? null : $menu->id) ? null : $request['parent'],
             'priority' => $request['priority'],
-            'link' => $request['link'],
+            'link' => empty($request['link']) ? (empty($menu->link) ? null : $menu->id) : $request['link'],
+            'page_id' => empty($request['page_id']) ? (empty($menu->page_id) ? null : $menu->id) : $request['page_id'],
         ];
     }
 }
