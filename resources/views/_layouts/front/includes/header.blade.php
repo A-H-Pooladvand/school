@@ -86,15 +86,15 @@
                     @foreach($_header_front_menu as $menu)
                         <li class="dropdown">
                             <a class="{{ empty($menu['children']) ? '' : 'dropdown-toggle' }}"
-                               data-toggle="dropdown"
-                               href="{{ !empty($menu['link'] ? \request()->root() . $menu['link'] : '') }}">
+
+                               href="{{ !empty($menu['link'] ) ?  $menu['link'] : '#' }}">
                                 {{ $menu['title'] }}
                             </a>
 
                             @if(!empty($menu['children']))
                                 <ul class="dropdown-menu">
                                     @foreach($menu['children'] as $child)
-                                        <li><a href="{{ \request()->root() . $menu['link'] }}">{{ $menu['title'] }}</a></li>
+                                        <li><a href="{{ $menu['link'] }}">{{ $menu['title'] }}</a></li>
                                     @endforeach
                                 </ul>
                             @endif
