@@ -6,7 +6,7 @@
                 <li data-transition="fade">
                     <img src="{{ image_url($slider->image) }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
 
-                    <div class="tp-caption tp-resizeme slider__title"
+                    {{--<div class="tp-caption tp-resizeme slider__title"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['326','270','270','150']" data-voffset="['0','0','0','0']"
                          data-responsive_offset="on"
@@ -48,7 +48,7 @@
                         @if(!empty($slider->link))
                             <a href="{{ $slider->link }}" class="border_radius btn_common white_border" target="_blank">مشاهده</a>
                         @endif
-                    </div>
+                    </div>--}}
 
                 </li>
             @endforeach
