@@ -33,6 +33,21 @@
 
             <div class="col-md-4 col-sm-4 footer_panel bottom25">
                 <h3 class="heading bottom25">
+                    <span>دسترسی سریع</span>
+                    <span class="divider-left"></span>
+                </h3>
+                <ul class="links">
+                    <li class="w-100"><a href="{{ route('home') }}"><i class="icon-chevron-small-right"></i>صفحه اصلی</a></li>
+                    <li class="w-100"><a href="{{ route('service.index') }}"><i class="icon-chevron-small-right"></i>رشته ها</a></li>
+                    <li class="w-100"><a href="{{ route('news.index') }}"><i class="icon-chevron-small-right"></i>اخبار</a></li>
+                    <li class="w-100"><a href="{{ route('album.index') }}"><i class="icon-chevron-small-right"></i>الوم تصاویر</a></li>
+                    <li class="w-100"><a href="{{ route('about.show') }}"><i class="icon-chevron-small-right"></i>درباره ما</a></li>
+                    <li class="w-100"><a href="{{ route('contact.show') }}"><i class="icon-chevron-small-right"></i>تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-4 footer_panel bottom25">
+                <h3 class="heading bottom25">
                     <span>آخرین اخبار</span>
                     <span class="divider-left"></span>
                 </h3>

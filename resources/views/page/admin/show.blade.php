@@ -1,5 +1,8 @@
-@extends('_layouts.admin.index')
+@php
+    /** @var \App\Page $page */
+@endphp
 
+@extends('_layouts.admin.index')
 
 @section('content')
 
@@ -14,23 +17,25 @@
 
         <tr>
             <th>عنوان</th>
-            <td>{{ $page['title'] }}</td>
+            <td>{{ $page->title }}</td>
         </tr>
 
         <tr>
             <th>نامک</th>
-            <td>{{ $page['slug'] }}</td>
+            <td>{{ $page->title }}</td>
         </tr>
 
         <tr>
             <th>محتوا</th>
-            <td>{!! $page['content'] !!}</td>
+            <td>{!! $page->content !!}</td>
         </tr>
 
-        <tr>
-            <th>نوع نمایش تصاویر</th>
-            <td>{!! $page['gallery_type_fa'] !!}</td>
-        </tr>
+        @if($page->gallery_type)
+            <tr>
+                <th>نوع نمایش تصاویر</th>
+                <td>{!! $page->gallery_type_fa !!}</td>
+            </tr>
+        @endif
 
         <tr>
             <th>نویسنده</th>
@@ -43,15 +48,15 @@
             </td>
         </tr>
 
-        @if(!empty($page['tags']))
+        @if(!empty($page->tags))
 
             <tr>
                 <th>کلمات کلیدی</th>
                 <td>
-                    @foreach($page['tags'] as $item)
+                    @foreach($page->tags as $item)
                         <span class="label label-info m-l-1-5">
                             <i class="fa fa-hashtag fa-fw"></i>
-                            {{ $item['title'] }}
+                            {{ $item->title }}
                         </span>
                     @endforeach
                 </td>
@@ -61,12 +66,12 @@
 
         <tr>
             <th>تاریخ ایجاد</th>
-            <td>{{ $page['created_at'] }}</td>
+            <td>{{ $page->created_at }}</td>
         </tr>
 
         <tr>
             <th>تاریخ ویرایش</th>
-            <td>{{ $page['updated_at'] }}</td>
+            <td>{{ $page->updated_at }}</td>
         </tr>
 
         </tbody>

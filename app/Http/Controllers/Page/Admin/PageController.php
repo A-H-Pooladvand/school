@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Page\Admin;
 
+use DB;
 use Auth;
 use App\Page;
-use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Multimedia\Multimedia;
@@ -54,10 +54,7 @@ class PageController extends Controller
 
     public function edit($id)
     {
-        $page = Page::with([
-            'tags',
-            'galleries',
-        ])->findOrFail($id);
+        $page = Page::with('tags', 'galleries')->findOrFail($id);
 
         $form = [
             'action' => route('admin.page.update', $page['id']),
@@ -73,8 +70,7 @@ class PageController extends Controller
 
         $page = Page::findOrFail($id);
 
-        DB::transaction(static function () use ($request, $page) {
-
+        DB::transaction(function () use ($request, $page) {
             $page->update($this->fields($request, $page));
 
             Multimedia::createOrUpdate($request, $page->galleries(), 0);
@@ -100,8 +96,8 @@ class PageController extends Controller
     private function validator(): array
     {
         $rules = [
-            'title' => 'required|max:100',
-            'slug' => 'required|max:100',
+            'title'   => 'required|max:100',
+            'slug'    => 'required|max:100',
             'content' => 'required',
             //'gallery_type' => 'required',
         ];
@@ -117,11 +113,11 @@ class PageController extends Controller
     {
         return [
             'user_id' => Auth::id(),
-            'title' => $request['title'],
-            'slug' => $request['slug'],
+            'title'   => $request['title'],
+            'slug'    => $request['slug'],
             'content' => $request['content'],
             //'gallery_type' => $request['gallery_type'],
-            'image' => $request['image'] ?? $page['image'],
+            'image'   => $request['image'] ?? $page['image'],
         ];
     }
 }

@@ -41,7 +41,7 @@
 
                     <li>
                         <a href="{{ $_header_font_setting->telegram }}">
-                            <i class="fa fa-telegram"></i>
+                            <i class="fa fa-telegram" aria-hidden="true"></i>
                         </a>
                     </li>
 
@@ -51,11 +51,11 @@
                         </a>
                     </li>
 
-                    <li>
+                    {{--<li>
                         <a href="{{ $_header_font_setting->linkedin }}">
                             <i class="icon-linkedin"></i>
                         </a>
-                    </li>
+                    </li>--}}
 
                 </ul>
 

@@ -32,7 +32,7 @@ class Page extends Model
 
     public function getGalleryTypeFaAttribute()
     {
-        switch ($this->attributes['gallery_type']) {
+        switch ($this->gallery_type) {
             case 'none':
                 return 'هیچکدام';
                 break;
