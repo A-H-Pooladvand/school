@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Slider\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Slider;
 use Auth;
+use App\Slider;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SliderController extends Controller
 {
@@ -14,16 +14,9 @@ class SliderController extends Controller
         return view('slider.admin.index');
     }
 
-    public function items(Request $request)
+    public function items(): array
     {
-        $sliders = Slider::select('id', 'title', 'link', 'created_at', 'updated_at');
-
-        $sliders = $this->getGrid($request)->items($sliders);
-        $sliders['rows'] = $sliders['rows']->each(static function ($item) {
-            $item->start_at_farsi = $item->start_at_fa;
-        });
-
-        return $sliders;
+        return Slider::grid();
     }
 
     public function create()
@@ -60,7 +53,7 @@ class SliderController extends Controller
             'method' => 'put',
         ];
 
-//        return image_url($slider->image ?? '', 37,23,true);
+        //        return image_url($slider->image ?? '', 37,23,true);
         return view('slider.admin.form', compact('form', 'slider'));
     }
 
@@ -86,15 +79,13 @@ class SliderController extends Controller
         Slider::whereIn('id', $ids)->delete();
     }
 
-    // Methods
-
     private function validator(): array
     {
         $rules = [
-            'title' => 'nullable|max:100',
+            'title'       => 'nullable|max:100',
             'description' => 'nullable|max:1000',
-            'link' => 'nullable|url|max:1000',
-            'image' => 'required',
+            'link'        => 'nullable|url|max:1000',
+            'image'       => 'required',
         ];
 
         if (request()->method() === 'PUT') {
@@ -107,11 +98,11 @@ class SliderController extends Controller
     private function fields(Request $request, Slider $slider = null): array
     {
         return [
-            'user_id' => Auth::id(),
-            'title' => $request['title'],
+            'user_id'     => Auth::id(),
+            'title'       => $request['title'],
             'description' => $request['description'] ?: '',
-            'link' => $request['link'] ?: '',
-            'image' => empty($request['image']) ? $slider['image'] : $request['image'],
+            'link'        => $request['link'] ?: '',
+            'image'       => empty($request['image']) ? $slider['image'] : $request['image'],
         ];
     }
 }

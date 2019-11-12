@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by Amirhossein Pooladvand
- */
 
 namespace App\Http\Controllers\_Controller\Grid;
 
-use App\Http\Controllers\Controller;
-
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 
 class Grid extends Filter
 {
@@ -49,44 +42,28 @@ class Grid extends Filter
     protected $total;
 
     /**
-     * @var \App\Http\Controllers\Controller
-     *
-     */
-    private $controller;
-
-    /**
-     * @var \Illuminate\Http\Request
-     *
-     */
-    private $request;
-
-    public function __construct(Controller $controller, Request $request)
-    {
-        $this->controller = $controller;
-        $this->request = $request;
-    }
-
-    /**
      * Prepare query for JEasyUi grid table
      *
-     * @param Builder $query
-     * @return array|Collection
+     * @param  Builder|\Illuminate\Database\Query\Builder  $query
+     *
+     * @return array
      */
-    public function items(Builder $query)
+    public function items(Builder $query): array
     {
-        $this->page = $this->request->page;
-        $this->rows = $this->request->rows;
+        $this->page = request('page');
+        $this->rows = request('rows');
         $this->total = $query->count();
 
-        $this->filter($this->request, $query);
-
+        $this->filter($query);
         $this->order($query);
 
-        $query->skip(($this->page - 1) * $this->rows)->take($this->rows);
+        $query
+            ->limit($this->rows)
+            ->offset(($this->page - 1) * $this->rows);
 
         return [
             'total' => $this->total,
-            'rows' => $query->get()
+            'rows'  => $query->get(),
         ];
     }
 
@@ -94,19 +71,19 @@ class Grid extends Filter
      * If there is an order request from the client, we order
      * and return the ordered query to user otherwise we return the query
      *
-     * @param Builder $query
+     * @param  Builder  $query
+     *
      * @return mixed
      */
     public function order(Builder $query)
     {
-        $this->order = $this->request['order'];
-        $this->sort = $this->request['sort'];
+        $this->order = request('order') ?? 'desc';
+        $this->sort = request('sort') ?? 'id';
 
-        if ( ! empty($this->sort) && ! empty($this->order)) {
+        if (! empty($this->sort) && ! empty($this->order)) {
             return $query->orderBy($this->sort, $this->order);
         }
 
-        return $query->orderBy('id', 'desc');
+        return $query;
     }
-
 }

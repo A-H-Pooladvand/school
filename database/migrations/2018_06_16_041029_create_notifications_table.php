@@ -13,13 +13,14 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('notifications', static function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedMediumInteger('user_id');
             $table->enum('status', ['publish', 'draft'])->default('publish')->comment('منتشر شده یا پیشنویس');
             $table->string('title', 100);
             $table->string('summary', 500);
             $table->string('image', 120);
+            $table->unsignedTinyInteger('priority')->default(1);
             $table->text('content');
             $table->timestamp('publish_at')->comment('تاریخ انتشار');
             $table->timestamp('expire_at')->nullable()->comment('تاریخ انقضا');

@@ -1,32 +1,47 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amirhossein
- * Date: 4/12/2018
- * Time: 4:03 PM
- */
 
 namespace App\Http\Helpers\Category;
 
+use Illuminate\Support\Collection;
 
 class JEasyUi
 {
-    public static function jsonFormat(array $categories)
+    /**
+     * Converts given categories to JEasyUI format.
+     *
+     * @param  iterable  $items
+     * @param  string|null  $text
+     * @param  string|null  $alt
+     * @param  string  $relationKey
+     * @return array
+     */
+    public static function jsonFormat(iterable $items, string $text = null, string $relationKey = null, string $alt = null): array
     {
-        $cats = [];
+        $relationKey = $relationKey ?? 'children';
+        $text = $text ?? 'title';
 
-        foreach ($categories as $key => $category) {
-            $cats[] = [
-                'id' => $category['id'],
-                'text' => $category['title'],
-                'state' => empty($category['children']) ? 'open' : 'closed'
-            ];
-
-            if (is_array($category['children'])) {
-                $cats[$key]['children'] = self::jsonFormat($category['children']);
-            }
+        if ($items instanceof Collection) {
+            $items = $items->toArray();
         }
 
-        return $cats;
+        return array_map(static function ($item) use ($relationKey, $text, $alt) {
+
+            if (! array_key_exists($text, $item)) {
+                $text = $alt;
+            }
+
+            $items = [
+                'id' => $item['id'],
+                'text' => $item[$text],
+                //'state' => empty($category[$key']) ? 'open' : 'closed',
+                'state' => 'open',
+            ];
+
+            if (array_key_exists($relationKey, $item) && is_array($item[$relationKey])) {
+                $items['children'] = self::jsonFormat($item[$relationKey], $text, $relationKey, $alt);
+            }
+
+            return $items;
+        }, $items);
     }
 }

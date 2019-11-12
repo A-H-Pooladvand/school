@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amirhossein
- * Date: 1/22/2018
- * Time: 9:59 PM
- */
 
 namespace App\Http\Controllers\_Controller\Grid;
 
-use App\Http\Helpers\DateConverter\DateConverter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class Filter
 {
@@ -21,21 +13,15 @@ class Filter
      */
     protected $filter;
 
-    protected function filter(Request $request, Builder $query)
+    protected function filter( $query)
     {
-        $this->filter = json_decode($request['filterRules'], true);
+        $this->filter = json_decode(request('filterRules'), true);
 
-        if ( ! $request->has('filterRules'))
+        if (! request()->has('filterRules')) {
             return $query;
+        }
 
         foreach ($this->filter as $i => $item) {
-
-            // Try to convert the field to the date \
-            try {
-                $item['value'] = DateConverter::toGregorian($item['value'] . ' 00:00:00')->format('Y-m-d');
-            } catch (\Exception $e) {
-
-            }
 
             switch ($item['op']) {
                 case 'contains':

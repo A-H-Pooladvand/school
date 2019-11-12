@@ -28,12 +28,11 @@ class Controller extends BaseController
     /**
      * JEasyUi's grid filters, search, sort and etc...
      *
-     * @param Request $request
      * @return Grid
      */
-    protected function getGrid(Request $request)
+    protected function getGrid(): Grid
     {
-        return new Grid($this, $request);
+        return new Grid();
     }
 
     /**

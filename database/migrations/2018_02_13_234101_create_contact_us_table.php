@@ -13,10 +13,10 @@ class CreateContactUsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_us', function (Blueprint $table) {
+        Schema::create('contact_us', static function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 150);
-            $table->text('content');
+            $table->string('title', 150)->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

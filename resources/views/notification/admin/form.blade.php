@@ -17,7 +17,6 @@
                     <input id="input_title" name="title" type="text" class="form-control" value="{{ $notification->title ?? '' }}">
                 </div>
 
-
                 <div class="form-group">
                     <label for="input_summary" class="control-label">خلاصه مطلب</label>
                     <textarea name="summary" id="input_summary" cols="30" rows="4" class="form-control">{{ $notification->summary ?? '' }}</textarea>
@@ -78,6 +77,11 @@
                         @endslot
 
                     @endcomponent
+                </div>
+
+                <div class="form-group">
+                    <label for="input_priority" class="control-label">اولویت</label>
+                    <input id="input_priority" name="priority" type="text" class="form-control" value="{{ $notification->priority ?? '' }}">
                 </div>
 
                 <div class="form-group">

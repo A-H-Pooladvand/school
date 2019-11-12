@@ -2,85 +2,22 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Notification extends Model
 {
-    protected $guarded = ['id'];
-
-    protected $casts = [
-        'has_comment' => 'boolean'
+    protected $appends = [
+        'created_at_fa',
+        'updated_at_fa',
+        'status_fa',
     ];
 
-    /** A news post has an author */
-    public function author()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    protected $casts = [
+        'has_comment' => 'boolean',
+    ];
 
-    /**
-     * Get all of the tags for the post.
-     */
-    public function tags()
+    public function getStatusFaAttribute(): ?string
     {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    /**
-     * Get all of the categories for the exam.
-     */
-    public function categories()
-    {
-        return $this->morphToMany(Category::class, 'categorizable', 'categorizables');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * Get all of the news's galleries.
-     */
-    public function galleries()
-    {
-        return $this->morphMany(Gallery::class, 'gallery');
-    }
-
-    /**
-     * Mutator SECTION
-     *
-     * Convert fields to persian and human readable format
-     */
-
-    public function getCreatedAtFaAttribute()
-    {
-        return jdate($this->attributes['created_at'])->format('Y/m/d');
-    }
-
-    public function getUpdatedAtFaAttribute()
-    {
-        return jdate($this->attributes['updated_at'])->format('Y/m/d');
-    }
-
-    public function getPublishAtFaAttribute()
-    {
-        return jdate($this->attributes['publish_at'])->format('Y/m/d');
-    }
-
-    public function getExpireAtFaAttribute()
-    {
-        return jdate($this->attributes['expire_at'])->format('Y/m/d');
-    }
-
-    public function getStatusFaAttribute()
-    {
-        switch ($this->attributes['status']) {
-            case 'publish':
-                return 'منتشر شده';
-                break;
-            default:
-                return 'پیش نویس';
-        }
+        return $this->status === 'publish' ? 'منتشر شده' : 'پیشنویس';
     }
 }

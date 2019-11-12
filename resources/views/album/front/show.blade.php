@@ -23,7 +23,7 @@
 
                 @foreach($album->galleries as $album)
                     <div class="cbp-item course">
-                        <img src="{{ image_url($album->path, 27, rand(25, 45), true) }}" alt="{{ $album->title }}">
+                        <img src="{{ image_url($album->path, 27, random_int(25, 45), true) }}" alt="{{ $album->title }}">
                         <div class="overlay">
                             <div class="centered text-center">
                                 <a href="{{ image_url($album->path) }}" class="cbp-lightbox opens"> <i class="icon-focus"></i></a>

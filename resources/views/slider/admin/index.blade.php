@@ -27,8 +27,8 @@
                             }
                         },
                         {field: 'link', sortable: true, title: 'خلاصه', align: 'center'},
-                        {field: 'created_at', width: 150, sortable: true, title: 'تاریخ ایجاد', align: 'center'},
-                        {field: 'updated_at', width: 150, sortable: true, title: 'تاریخ ویرایش', align: 'center'},
+                        {field: 'created_at_fa', width: 150, sortable: true, title: 'تاریخ ایجاد', align: 'center'},
+                        {field: 'updated_at_fa', width: 150, sortable: true, title: 'تاریخ ویرایش', align: 'center'},
                     ]],
                     toolbar: [
                         {

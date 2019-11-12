@@ -3,18 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-/**
- * @property mixed $id
- */
 class Category extends Model
 {
-    protected $guarded = ['id'];
-
     public function news(): MorphToMany
     {
         return $this->morphedByMany(News::class, 'categorizable', 'categorizables');
@@ -50,7 +44,7 @@ class Category extends Model
         return $this->hasMany(__CLASS__, 'parent_id');
     }
 
-    public function children()
+    public function children(): HasMany
     {
         return $this->child()->with('children');
     }
@@ -80,23 +74,8 @@ class Category extends Model
         return $this->albums()->latest();
     }
 
-    public function service_query()
-    {
-        return $this->service()->latest();
-    }
-
-    public function setTitleAttribute($value)
+    public function setTitleAttribute($value): void
     {
         $this->attributes['title'] = strFa($value);
-    }
-
-    public function getCreatedAtAttribute()
-    {
-        return jdate($this->attributes['created_at'])->format('Y/m/d');
-    }
-
-    public function getUpdatedAtAttribute()
-    {
-        return jdate($this->attributes['updated_at'])->format('Y/m/d');
     }
 }

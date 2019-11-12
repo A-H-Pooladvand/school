@@ -16,7 +16,7 @@
                 <div class="pull-left">
 
                     <span class="info">
-                        <a href="{{ $_header_font_setting->telegram }}"> سوالی دارید؟</a>
+                        <a href="{{ route('contact.show')  }}"> سوالی دارید؟</a>
                     </span>
 
                     <span class="info">

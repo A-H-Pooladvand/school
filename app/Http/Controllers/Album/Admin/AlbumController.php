@@ -27,23 +27,16 @@ class AlbumController extends Controller
         return view('album.admin.index');
     }
 
-    public function items(Request $request)
+    public function items(): array
     {
-        $album = Album::select(['id', 'title', 'created_at', 'updated_at']);
-
-        return $this->getGrid($request)->items($album);
+        return Album::grid();
     }
 
     public function create()
     {
         $form = ['action' => route('admin.album.store')];
 
-        $categories = Category::with('children')->where([
-            'category_type' => Album::class,
-            'parent_id' => null,
-        ])->get()->toArray();
-
-        $categories = JEasyUi::jsonFormat($categories);
+        $categories = Album::treeCategories();
 
         return view('album.admin.form', compact('form', 'categories'));
     }
@@ -53,13 +46,11 @@ class AlbumController extends Controller
         $this->validate($request, $this->albumQuery->validate());
 
         DB::transaction(function () use ($request) {
-
             $album = Album::create($this->albumQuery->fields());
 
             Multimedia::createOrUpdate($request, $album->galleries(), 0);
 
             $album->categories()->attach($request->categories);
-
         });
 
         return ['message' => 'مطلب جدید با موفقیت ثبت شد.'];
@@ -78,12 +69,12 @@ class AlbumController extends Controller
 
         $form = [
             'action' => route('admin.album.update', $album['id']),
-            'method' => 'put'
+            'method' => 'put',
         ];
 
         $categories = Category::with('children')->where([
             'category_type' => Album::class,
-            'parent_id' => null,
+            'parent_id'     => null,
         ])->get()->toArray();
 
         $categories = JEasyUi::jsonFormat($categories);
@@ -98,7 +89,6 @@ class AlbumController extends Controller
         $this->validate($request, $this->albumQuery->validate());
 
         DB::transaction(function () use ($request, $id) {
-
             $album = Album::find($id);
 
             $album->update($this->albumQuery->fields($album));
@@ -106,7 +96,6 @@ class AlbumController extends Controller
             Multimedia::createOrUpdate($request, $album->galleries(), 0);
 
             $album->categories()->sync($request->categories);
-
         });
 
         return ['message' => 'مطلب جدید با موفقیت ثبت شد.'];
