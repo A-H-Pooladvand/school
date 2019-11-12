@@ -1,23 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amirhossein
- * Date: 2/6/2018
- * Time: 11:14 PM
- */
 
 namespace App\Http\ViewComposers\Menu\Admin;
 
 use Illuminate\View\View;
+use App\Http\ViewComposers\Menu\Admin\Src\Admin;
 
 class Render
 {
     /**
-     * @param View $view
+     * Admin information.
+     *
+     * @var \App\Http\ViewComposers\Menu\Admin\Src\Admin
+     */
+    private $admin;
+
+    public function __construct(Admin $admin)
+    {
+        $this->admin = $admin;
+    }
+
+    /**
+     * Compose global admin panel sidebar information.
+     *
+     * @param  \Illuminate\View\View  $view
      */
     public function compose(View $view)
     {
-        $menus = require_once app_path('Http/ViewComposers/Menu/Admin/Admin.php');
-        $view->with('sidebar_menus', $menus);
+        $view->with('sidebar_menus', $this->admin->get());
     }
 }

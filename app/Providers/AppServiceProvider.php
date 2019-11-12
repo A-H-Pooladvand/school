@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use View;
 use Blade;
 use Illuminate\Support\ServiceProvider;
-use Schema;
-use View;
+use App\Http\ViewComposers\Menu\Admin\Render;
+use App\Http\ViewComposers\Front\HeaderRender;
+use App\Http\ViewComposers\Front\FooterRender;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,20 +18,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('_layouts.admin.includes.sidebar', 'App\Http\ViewComposers\Menu\Admin\Render');
-        View::composer('_layouts.front.includes.header', 'App\Http\ViewComposers\Front\ActiveMenuComposer');
-        View::composer('_layouts.front.includes.footer', 'App\Http\ViewComposers\Front\Render');
-        View::composer('_layouts.front.includes.header', 'App\Http\ViewComposers\Front\HeaderRender');
+        View::composer('_layouts.admin.includes.sidebar', Render::class);
+        View::composer('_layouts.front.includes.header', HeaderRender::class);
+        View::composer('_layouts.front.includes.footer', FooterRender::class);
 
-        Blade::directive('script', function ($expression) {
+        Blade::directive('script', static function ($expression) {
             return "<?php \$__env->startPush('page-scripts'); ?>
-                    <script src=\"<?php echo e(asset(\"assets/{$expression}\")); ?>\"></script>
+                    <script src=\"<?php echo e(asset('assets/{$expression}')); ?>\"></script>
                     <?php \$__env->stopPush(); ?>";
         });
 
-        Blade::directive('style', function ($expression) {
+        Blade::directive('style', static function ($expression) {
             return "<?php \$__env->startPush('page-styles'); ?>
-                    <link rel=\"stylesheet\" href=\"<?php echo e(asset(\"assets/{$expression}\")); ?>\"></script>
+                    <link rel=\"stylesheet\" href=\"<?php echo e(asset('assets/{$expression}')); ?>\">
                     <?php \$__env->stopPush(); ?>";
         });
     }
@@ -41,12 +42,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (config('app.env') != "local")
-        {
-            $this->app->bind('path.public', function () {
-                return base_path('../berenjkar.zeitoon.org');
-                    #base_path('public_html');
-            });
-        }
+        //
     }
 }

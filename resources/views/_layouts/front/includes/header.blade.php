@@ -32,31 +32,26 @@
                 </div>
 
                 <ul class="social_top pull-right">
-
                     <li>
                         <a href="{{ $_header_font_setting->instagram }}">
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>
-
                     <li>
                         <a href="{{ $_header_font_setting->telegram }}">
                             <i class="fa fa-telegram" aria-hidden="true"></i>
                         </a>
                     </li>
-
                     <li>
                         <a href="{{ $_header_font_setting->twitter }}">
                             <i class="icon-twitter4"></i>
                         </a>
                     </li>
-
                     {{--<li>
                         <a href="{{ $_header_font_setting->linkedin }}">
                             <i class="icon-linkedin"></i>
                         </a>
                     </li>--}}
-
                 </ul>
 
             </div>

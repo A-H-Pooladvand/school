@@ -3,18 +3,31 @@
 namespace App\Http\ViewComposers\Front;
 
 use Illuminate\View\View;
+use App\Http\ViewComposers\Front\Src\Header;
 
 class HeaderRender
 {
     /**
-     * @param View $view
+     * Header variables.
+     *
+     * @var \App\Http\ViewComposers\Front\Src\Header
+     */
+    private $header;
+
+    public function __construct(Header $header)
+    {
+        $this->header = $header;
+    }
+
+    /**
+     * Compose global header variables.
+     *
+     * @param  \Illuminate\View\View  $view
      */
     public function compose(View $view)
     {
-        $variables = require_once app_path('Http/ViewComposers/Front/HeaderVariables.php');
-
-        foreach ($variables as $key => $variable) {
-            $view->with('_header_' . $key, $variable);
+        foreach ($this->header->get() as $key => $variable) {
+            $view->with('_header_'.$key, $variable);
         }
     }
 }
