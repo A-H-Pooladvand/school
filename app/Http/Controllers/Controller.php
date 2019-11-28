@@ -15,10 +15,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests,
-        DispatchesJobs,
-        ValidatesRequests,
-        SEOToolsTrait;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, SEOToolsTrait;
 
     public function __construct()
     {
@@ -44,7 +41,7 @@ class Controller extends BaseController
      */
     protected function getGrid(): Grid
     {
-        return new Grid();
+        return new Grid;
     }
 
     /**

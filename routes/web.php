@@ -2,7 +2,7 @@
 
 function pathHandler($path)
 {
-    foreach (File::allFiles(__DIR__ . '/' . $path) as $partial) {
+    foreach (File::allFiles(__DIR__.'/'.$path) as $partial) {
         require $partial->getPathname();
     }
 }
@@ -12,7 +12,7 @@ function pathHandler($path)
 Auth::routes();
 
 /** Admin Routes */
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'permission:admin-panel'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'permission:admin-panel'], static function () {
     pathHandler('admin');
 });
 
