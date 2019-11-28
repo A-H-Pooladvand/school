@@ -16,13 +16,6 @@ class PageController extends Controller
         return view('page.admin.index');
     }
 
-    public function items(Request $request)
-    {
-        $pages = Page::select(['id', 'title', 'created_at', 'updated_at']);
-
-        return $this->getGrid($request)->items($pages);
-    }
-
     public function create()
     {
         $form = ['action' => route('admin.page.store')];
@@ -96,8 +89,8 @@ class PageController extends Controller
     private function validator(): array
     {
         $rules = [
-            'title'   => 'required|max:100',
-            'slug'    => 'required|max:100',
+            'title' => 'required|max:100',
+            'slug' => 'required|max:100',
             'content' => 'required',
             //'gallery_type' => 'required',
         ];
@@ -113,11 +106,11 @@ class PageController extends Controller
     {
         return [
             'user_id' => Auth::id(),
-            'title'   => $request['title'],
-            'slug'    => $request['slug'],
+            'title' => $request['title'],
+            'slug' => $request['slug'],
             'content' => $request['content'],
             //'gallery_type' => $request['gallery_type'],
-            'image'   => $request['image'] ?? $page['image'],
+            'image' => $request['image'] ?? $page['image'],
         ];
     }
 }

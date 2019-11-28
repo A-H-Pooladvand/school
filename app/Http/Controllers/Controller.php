@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Src\Form\Form;
+use Artesaos\SEOTools\Traits\SEOTools;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Http\Controllers\_Controller\Grid\Grid;
 use App\Http\Controllers\_Controller\TagHandler;
 use App\Http\Controllers\_Controller\VisitHandler;
-use Artesaos\SEOTools\Traits\SEOTools;
-use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -23,6 +23,18 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->seo()->setCanonical(url()->current());
+    }
+
+    /**
+     * Sets form attributes
+     *
+     * @param  string  $action
+     * @param  string|null  $method
+     * @return \App\Http\Src\Form\Form
+     */
+    public function setForm(string $action, string $method = null): Form
+    {
+        return (new Form($action, $method));
     }
 
     /**
@@ -38,10 +50,10 @@ class Controller extends BaseController
     /**
      * Handling tags such as sync and attach to tag (polymorphic) table
      *
-     * @param array $newTags
+     * @param  array  $newTags
      * @return TagHandler
      */
-    protected function tags(array $newTags = null)
+    protected function tags(array $newTags = null): TagHandler
     {
         return new TagHandler($this, $newTags);
     }
@@ -51,12 +63,12 @@ class Controller extends BaseController
      * we use this class to handle and create new visit
      */
 
-    public function visit()
+    public function visit(): VisitHandler
     {
         return new VisitHandler($this);
     }
 
-    public function setBreadcrumb($value)
+    public function setBreadcrumb($value): void
     {
         view()->share('_page_breadcrumb', $value);
     }

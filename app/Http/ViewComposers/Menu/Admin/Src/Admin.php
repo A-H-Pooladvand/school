@@ -14,222 +14,241 @@ class Admin
         return [
             // Dashboard
             [
-                'title'      => 'داشبورد',
-                'icon'       => 'fa fa-fw fa-home',
-                'link'       => '#',
+                'title' => 'داشبورد',
+                'icon' => 'fa fa-fw fa-home',
+                'link' => '#',
                 'permission' => 'panel',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'مشاهده سایت',
-                        'link'       => route('home'),
+                        'title' => 'مشاهده سایت',
+                        'link' => route('home'),
                         'permission' => 'admin-panel',
-                        'target'     => '_blank',
+                        'target' => '_blank',
                     ],
                     [
-                        'title'      => 'تنظیمات',
-                        'link'       => route('admin.setting.edit'),
+                        'title' => 'تنظیمات',
+                        'link' => route('admin.setting.edit'),
                         'permission' => 'admin-panel',
                     ],
                 ],
             ],
             // User
             [
-                'title'      => 'کاربران',
-                'icon'       => 'fa fa-fw fa-user',
-                'link'       => '#',
+                'title' => 'کاربران',
+                'icon' => 'fa fa-fw fa-user',
+                'link' => '#',
                 'permission' => 'user',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن کاربر',
-                        'link'       => route('admin.user.create'),
+                        'title' => 'افزودن کاربر',
+                        'link' => route('admin.user.create'),
                         'permission' => 'create-user',
                     ],
                     [
-                        'title'      => 'لیست کاربران',
-                        'link'       => route('admin.user.index'),
+                        'title' => 'لیست کاربران',
+                        'link' => route('admin.user.index'),
                         'permission' => 'read-user',
                     ],
                     [
-                        'title'      => 'افزودن نقش',
-                        'link'       => route('admin.role.create'),
+                        'title' => 'افزودن نقش',
+                        'link' => route('admin.role.create'),
                         'permission' => 'create-acl',
                     ],
                     [
-                        'title'      => 'لیست نقش ها',
-                        'link'       => route('admin.role.index'),
+                        'title' => 'لیست نقش ها',
+                        'link' => route('admin.role.index'),
                         'permission' => 'read-acl',
                     ],
                 ],
             ],
             // Slider
             [
-                'title'      => 'اسلایدر',
-                'icon'       => 'fa fa-fw fa-sliders',
-                'link'       => '#',
+                'title' => 'اسلایدر',
+                'icon' => 'fa fa-fw fa-sliders',
+                'link' => '#',
                 'permission' => 'slider',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن اسلایدر',
-                        'link'       => route('admin.slider.create'),
+                        'title' => 'افزودن اسلایدر',
+                        'link' => route('admin.slider.create'),
                         'permission' => 'create-slider',
                     ],
                     [
-                        'title'      => 'لیست اسلاید ها',
-                        'link'       => route('admin.slider.index'),
+                        'title' => 'لیست اسلاید ها',
+                        'link' => route('admin.slider.index'),
                         'permission' => 'read-slider',
                     ],
                 ],
             ],
             // News
             [
-                'title'      => 'اخبار',
-                'icon'       => 'fa fa-fw fa-diamond',
-                'link'       => '#',
+                'title' => 'اخبار',
+                'icon' => 'fa fa-fw fa-diamond',
+                'link' => '#',
                 'permission' => 'news',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن مطلب',
-                        'link'       => route('admin.news.create'),
+                        'title' => 'افزودن مطلب',
+                        'link' => route('admin.news.create'),
                         'permission' => 'create-news',
                     ],
                     [
-                        'title'      => 'لیست مطالب',
-                        'link'       => route('admin.news.index'),
+                        'title' => 'لیست مطالب',
+                        'link' => route('admin.news.index'),
                         'permission' => 'read-news',
                     ],
                     [
-                        'title'      => 'افزودن دسته بندی',
-                        'link'       => route('admin.news.category.create'),
+                        'title' => 'افزودن دسته بندی',
+                        'link' => route('admin.news.category.create'),
                         'permission' => 'create-news|edit-news',
                     ],
                     [
-                        'title'      => 'لیست دسته بندی ها',
-                        'link'       => route('admin.news.category.index'),
+                        'title' => 'لیست دسته بندی ها',
+                        'link' => route('admin.news.category.index'),
                         'permission' => 'create-news|edit-news',
+                    ],
+                ],
+            ],
+            // Link
+            [
+                'title' => 'لینکدونی',
+                'icon' => 'fa fa-fw fa-link',
+                'link' => '#',
+                'permission' => 'link',
+                'sub' => [
+                    [
+                        'title' => 'افزودن لینک',
+                        'link' => route('admin.link.create'),
+                        'permission' => 'create-link',
+                    ],
+                    [
+                        'title' => 'لیست لینک ها',
+                        'link' => route('admin.link.index'),
+                        'permission' => 'read-link',
                     ],
                 ],
             ],
             // Service
             [
-                'title'      => 'خدمت ها',
-                'icon'       => 'fa fa-fw fa-gear',
-                'link'       => '#',
+                'title' => 'خدمت ها',
+                'icon' => 'fa fa-fw fa-gear',
+                'link' => '#',
                 'permission' => 'service',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن مطلب',
-                        'link'       => route('admin.service.create'),
+                        'title' => 'افزودن مطلب',
+                        'link' => route('admin.service.create'),
                         'permission' => 'create-service',
                     ],
                     [
-                        'title'      => 'لیست مطالب',
-                        'link'       => route('admin.service.index'),
+                        'title' => 'لیست مطالب',
+                        'link' => route('admin.service.index'),
                         'permission' => 'read-service',
                     ],
                     [
-                        'title'      => 'افزودن دسته بندی',
-                        'link'       => route('admin.service.category.create'),
+                        'title' => 'افزودن دسته بندی',
+                        'link' => route('admin.service.category.create'),
                         'permission' => 'create-service|edit-service',
                     ],
                     [
-                        'title'      => 'لیست دسته بندی ها',
-                        'link'       => route('admin.service.category.index'),
+                        'title' => 'لیست دسته بندی ها',
+                        'link' => route('admin.service.category.index'),
                         'permission' => 'create-service|edit-service',
                     ],
                 ],
             ],
             // Notification
             [
-                'title'      => 'اطلاعیه ها',
-                'icon'       => 'fa fa-fw fa-bell-o',
-                'link'       => '#',
+                'title' => 'اطلاعیه ها',
+                'icon' => 'fa fa-fw fa-bell-o',
+                'link' => '#',
                 'permission' => 'notification',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن اطلاعیه',
-                        'link'       => route('admin.notification.create'),
+                        'title' => 'افزودن اطلاعیه',
+                        'link' => route('admin.notification.create'),
                         'permission' => 'create-notification',
                     ],
                     [
-                        'title'      => 'لیست اطلاعیه ها',
-                        'link'       => route('admin.notification.index'),
+                        'title' => 'لیست اطلاعیه ها',
+                        'link' => route('admin.notification.index'),
                         'permission' => 'read-notification',
                     ],
                     [
-                        'title'      => 'افزودن دسته بندی',
-                        'link'       => route('admin.notification.category.create'),
+                        'title' => 'افزودن دسته بندی',
+                        'link' => route('admin.notification.category.create'),
                         'permission' => 'create-notification|edit-notification',
                     ],
                     [
-                        'title'      => 'لیست دسته بندی ها',
-                        'link'       => route('admin.notification.category.index'),
+                        'title' => 'لیست دسته بندی ها',
+                        'link' => route('admin.notification.category.index'),
                         'permission' => 'create-notification|edit-notification',
                     ],
                 ],
             ],
             // Album
             [
-                'title'      => 'آلبوم تصاویر',
-                'icon'       => 'fa fa-fw fa-image',
-                'link'       => '#',
+                'title' => 'آلبوم تصاویر',
+                'icon' => 'fa fa-fw fa-image',
+                'link' => '#',
                 'permission' => 'album',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن آلبوم',
-                        'link'       => route('admin.album.create'),
+                        'title' => 'افزودن آلبوم',
+                        'link' => route('admin.album.create'),
                         'permission' => 'create-album',
                     ],
                     [
-                        'title'      => 'لیست آلبوم ها',
-                        'link'       => route('admin.album.index'),
+                        'title' => 'لیست آلبوم ها',
+                        'link' => route('admin.album.index'),
                         'permission' => 'read-album',
                     ],
                     [
-                        'title'      => 'افزودن دسته بندی',
-                        'link'       => route('admin.album.category.create'),
+                        'title' => 'افزودن دسته بندی',
+                        'link' => route('admin.album.category.create'),
                         'permission' => 'create-album|edit-album',
                     ],
                     [
-                        'title'      => 'لیست دسته بندی ها',
-                        'link'       => route('admin.album.category.index'),
+                        'title' => 'لیست دسته بندی ها',
+                        'link' => route('admin.album.category.index'),
                         'permission' => 'create-album|edit-album',
                     ],
                 ],
             ],
             // Page
             [
-                'title'      => 'صفحات',
-                'icon'       => 'fa fa-fw fa-sticky-note',
-                'link'       => '#',
+                'title' => 'صفحات',
+                'icon' => 'fa fa-fw fa-sticky-note',
+                'link' => '#',
                 'permission' => 'page',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن صفحه',
-                        'link'       => route('admin.page.create'),
+                        'title' => 'افزودن صفحه',
+                        'link' => route('admin.page.create'),
                         'permission' => 'create-page',
                     ],
                     [
-                        'title'      => 'لیست صفحات',
-                        'link'       => route('admin.page.index'),
+                        'title' => 'لیست صفحات',
+                        'link' => route('admin.page.index'),
                         'permission' => 'read-page',
                     ],
                 ],
             ],
             // Menu
             [
-                'title'      => 'منو',
-                'icon'       => 'fa fa-fw fa-bars',
-                'link'       => '#',
+                'title' => 'منو',
+                'icon' => 'fa fa-fw fa-bars',
+                'link' => '#',
                 'permission' => 'menu',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'ایجاد منو',
-                        'link'       => route('admin.menu.create'),
+                        'title' => 'ایجاد منو',
+                        'link' => route('admin.menu.create'),
                         'permission' => 'create-menu',
                     ],
                     [
-                        'title'      => 'لیست منو ها',
-                        'link'       => route('admin.menu.index'),
+                        'title' => 'لیست منو ها',
+                        'link' => route('admin.menu.index'),
                         'permission' => 'create-menu',
                     ],
                 ],
@@ -237,71 +256,71 @@ class Admin
             // Tags
             [
 
-                'title'      => 'کلمات کلیدی',
-                'icon'       => 'fa fa-fw fa-tags',
-                'link'       => '#',
+                'title' => 'کلمات کلیدی',
+                'icon' => 'fa fa-fw fa-tags',
+                'link' => '#',
                 'permission' => 'tag',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'افزودن کلمه کلیدی',
-                        'link'       => route('admin.tag.create'),
+                        'title' => 'افزودن کلمه کلیدی',
+                        'link' => route('admin.tag.create'),
                         'permission' => 'create-tag',
                     ],
                     [
-                        'title'      => 'لیست کلمات کلیدی',
-                        'link'       => route('admin.tag.index'),
+                        'title' => 'لیست کلمات کلیدی',
+                        'link' => route('admin.tag.index'),
                         'permission' => 'read-tag',
                     ],
                 ],
             ],
             // About
             [
-                'title'      => 'درباره ما',
-                'icon'       => 'fa fa-fw fa-info',
-                'link'       => '#',
+                'title' => 'درباره ما',
+                'icon' => 'fa fa-fw fa-info',
+                'link' => '#',
                 'permission' => 'about',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'ویرایش درباره ما',
-                        'link'       => route('admin.about.edit'),
+                        'title' => 'ویرایش درباره ما',
+                        'link' => route('admin.about.edit'),
                         'permission' => 'create-about',
                     ],
                 ],
             ],
             // Contact-us
             [
-                'title'      => 'پیش ثبت نام',
-                'icon'       => 'fa fa-fw fa-diamond',
-                'link'       => '#',
+                'title' => 'پیش ثبت نام',
+                'icon' => 'fa fa-fw fa-diamond',
+                'link' => '#',
                 'permission' => 'contact',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'لیست درخواست ها',
-                        'link'       => route('admin.enrollment.index'),
+                        'title' => 'لیست درخواست ها',
+                        'link' => route('admin.enrollment.index'),
                         'permission' => 'read-enrollment',
                     ],
                 ],
             ],
             // Contact-us
             [
-                'title'      => 'تماس با ما',
-                'icon'       => 'fa fa-fw fa-phone',
-                'link'       => '#',
+                'title' => 'تماس با ما',
+                'icon' => 'fa fa-fw fa-phone',
+                'link' => '#',
                 'permission' => 'contact',
-                'sub'        => [
+                'sub' => [
                     [
-                        'title'      => 'مشاهده تماس با ما',
-                        'link'       => route('admin.contact.show', 1),
+                        'title' => 'مشاهده تماس با ما',
+                        'link' => route('admin.contact.show', 1),
                         'permission' => 'read-contact',
                     ],
                     [
-                        'title'      => 'ویرایش تماس با ما',
-                        'link'       => route('admin.contact.edit', 1),
+                        'title' => 'ویرایش تماس با ما',
+                        'link' => route('admin.contact.edit', 1),
                         'permission' => 'edit-about',
                     ],
                     [
-                        'title'      => 'پیام ها',
-                        'link'       => route('admin.contact.contacts.index'),
+                        'title' => 'پیام ها',
+                        'link' => route('admin.contact.contacts.index'),
                         'permission' => 'edit-about',
                     ],
                 ],

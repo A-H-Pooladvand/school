@@ -16,7 +16,7 @@
 
           $('#dg').iDataGrid({
               title: 'لیست صفحات',
-              url: '{{ route('admin.page.items') }}',
+              url: '{{ route('admin.grid.index', 'page') }}',
               columns: [[
                 { field: 'checkbox', checkbox: true },
                 { field: 'id', sortable: true, title: 'شناسه', align: 'center' },

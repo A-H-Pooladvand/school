@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EnrollmentTableSeeder::class);
         $this->call(MenuTableSeeder::class);
         $this->call(SettingTableSeeder::class);
+        $this->call(LinksTableSeeder::class);
     }
 }

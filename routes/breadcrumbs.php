@@ -402,3 +402,28 @@ Breadcrumbs::register('about-edit', static function (Breadcrumb $breadcrumbs, $a
     $breadcrumbs->parent('about-show', $about);
     $breadcrumbs->push('ویرایش درباره ما', route('admin.about.edit', $about->id));
 });
+
+/** Link */
+
+# Link
+Breadcrumbs::register('link', static function (Breadcrumb $breadcrumbs) {
+    $breadcrumbs->push('لیست لینک ها', route('admin.link.index'));
+});
+
+# Link > Create
+Breadcrumbs::register('link-create', static function (Breadcrumb $breadcrumbs) {
+    $breadcrumbs->parent('link');
+    $breadcrumbs->push('افزودن لینک', route('admin.link.create'));
+});
+
+# Link > Show
+Breadcrumbs::register('link-show', static function (Breadcrumb $breadcrumbs, $link) {
+    $breadcrumbs->parent('link');
+    $breadcrumbs->push('مشاهده لینک', route('admin.link.show', $link->id));
+});
+
+# Link > Show > Edit
+Breadcrumbs::register('link-edit', static function (Breadcrumb $breadcrumbs, $link) {
+    $breadcrumbs->parent('link-show', $link);
+    $breadcrumbs->push('ویرایش لینک', route('admin.link.edit', $link->id));
+});
