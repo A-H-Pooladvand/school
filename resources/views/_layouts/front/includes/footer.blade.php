@@ -1,5 +1,6 @@
 <footer class="padding-top">
-    <div class="container">
+
+    <div class="container-fluid">
 
         <p>
             <i class="fa fa-contao fa-fw"></i>
@@ -16,7 +17,7 @@
 
         <div class="row">
 
-            <div class="col-md-3 col-sm-4 footer_panel bottom25">
+            <div class="col-md-2 col-sm-6 footer_panel bottom25">
                 <h3 class="heading bottom25">
                     <span>شبکه های اجتماعی</span>
                     <span class="divider-left"></span>
@@ -39,7 +40,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-3 col-sm-4 footer_panel bottom25">
+            <div class="col-md-2 col-sm-6 footer_panel bottom25">
                 <h3 class="heading bottom25">
                     <span>دسترسی سریع</span>
                     <span class="divider-left"></span>
@@ -54,7 +55,21 @@
                 </ul>
             </div>
 
-            <div class="col-md-3 col-sm-4 footer_panel bottom25">
+            <div class="col-md-2 col-sm-6 footer_panel bottom25">
+                <h3 class="heading bottom25">
+                    <span>سایت های مرتبط</span>
+                    <span class="divider-left"></span>
+                </h3>
+                <ul class="links">
+                    @foreach($_footer_links as $link)
+                        <li class="w-100">
+                            <a href="{{ $link->link }}">{{ $link->title }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div class="col-md-2 col-sm-6 footer_panel bottom25">
                 <h3 class="heading bottom25">
                     <span>آخرین اخبار</span>
                     <span class="divider-left"></span>
@@ -68,7 +83,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-3 col-sm-4 footer_panel bottom25">
+            <div class="col-md-2 col-sm-6 footer_panel bottom25">
                 <h3 class="heading bottom25">
                     <span>آخرین اطلاعیه ها</span>
                     <span class="divider-left"></span>
@@ -83,5 +98,7 @@
             </div>
 
         </div>
+
     </div>
+
 </footer>

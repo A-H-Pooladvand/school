@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers\Front\Src;
 
 use Cache;
 use App\News;
+use App\Link;
 use App\Setting;
 use App\Notification;
 use Illuminate\Database\Eloquent\Builder;
@@ -40,6 +41,10 @@ class Footer
 
             'setting' => Cache::remember('_footer_settings_', 1, static function () {
                 return Setting::first();
+            }),
+
+            'links' => Cache::remember('_footer_links_', 1, static function () {
+                return Link::latest()->take(5)->get();
             }),
 
         ];

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Contact\Front;
 
 use App\Contact;
-use App\ContactUs;
-use App\Http\Controllers\Controller;
 use App\Setting;
+use App\ContactUs;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
@@ -31,8 +31,13 @@ class ContactController extends Controller
             'subject' => 'required|max:50',
             'content' => 'required|max:500',
             //'captcha' => 'required|captcha',
+        ], [
+            'name.required' => 'فیلد نام مورد نیاز است.',
+            'email.email' => 'فیلد ایمیل نامعتبر است.',
+            'phone.required' => 'فیلد تلفن مورد نیاز است.',
+            'subject.required' => 'فیلد موضوع تماس مورد نیاز است.',
+            'content.required' => 'فیلد توضیحات مورد نیاز است.',
         ]);
-
 
         $contact = Contact::create([
             'name' => $request->name,
@@ -42,10 +47,11 @@ class ContactController extends Controller
             'content' => $request['content'],
         ]);
 
-        if ($contact) {
-            return back()->with('message', 'درخواست شما ثبت شد. در اسرع وقت به درخواست شما رسیدگی خواهد شد.');
-        }
-
-        return back()->with('message', 'مشکلی پیش امده لطفا دوباره تلاش نمایید.');
+        return back()->with(
+            'message',
+            $contact
+                ? 'درخواست شما ثبت شد. در اسرع وقت به درخواست شما رسیدگی خواهد شد.'
+                : 'مشکلی پیش امده لطفا دوباره تلاش نمایید.'
+        );
     }
 }

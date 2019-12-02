@@ -44,6 +44,14 @@
                         <p>{{ $setting->phone }}</p>
                     </div>
 
+                    <a href="{{ route('recruitment.create') }}">
+                        <div class="address">
+                            <i class="icon icon-woman border_radius"></i>
+                            <h4>همکاری با ما</h4>
+                            <p>برای تکمیل فرم لطفا کلیک نمایید</p>
+                        </div>
+                    </a>
+
                 </div>
                 <div class="col-md-8 fadeInRight" data-wow-delay="4500ms">
                     <h2 class="heading heading_space">جهت ارتباط با هنرستان فرم زیر را تکمیل نمایید<span class="divider-left"></span></h2>
