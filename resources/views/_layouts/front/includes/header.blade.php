@@ -16,7 +16,7 @@
                 <div class="pull-left">
 
                     <span class="info">
-                        <a href="{{ route('contact.show')  }}"> سوالی دارید؟</a>
+                        <a href="mailto: {{ $_header_font_setting->email }}">سوالی دارید؟</a>
                     </span>
 
                     <span class="info">
@@ -26,7 +26,7 @@
 
                     <span class="info">
                         <i class="icon-mail" style="padding-right: .5rem"></i>
-                        {{ $_header_font_setting->email }}
+                        <a href="mailto: {{ $_header_font_setting->email }}">{{ $_header_font_setting->email }}</a>
                     </span>
 
                 </div>

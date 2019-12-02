@@ -12,7 +12,7 @@
         </p>
         <p class="heading_space">
             <i class="fa fa-envelope fa-fw"></i>
-            {{ $_footer_setting->email }}
+            <a href="mailto: {{ $_footer_setting->email }}">{{ $_footer_setting->email }}</a>
         </p>
 
         <div class="row">
