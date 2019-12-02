@@ -325,6 +325,20 @@ class Admin
                     ],
                 ],
             ],
+            // Recruitment
+            [
+                'title' => 'همکاری',
+                'icon' => 'fa fa-fw fa-diamond',
+                'link' => '#',
+                'permission' => 'recruitment',
+                'sub' => [
+                    [
+                        'title' => 'لیست فرم ها',
+                        'link' => route('admin.recruitment.index'),
+                        'permission' => 'read-recruitment',
+                    ],
+                ],
+            ],
         ];
     }
 }

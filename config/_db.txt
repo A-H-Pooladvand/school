@@ -1,0 +1,3 @@
+DB_DATABASE=maedehsch_db
+DB_USERNAME=maedehsch_usr
+DB_PASSWORD=yhwDwWaO8

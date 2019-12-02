@@ -95,10 +95,24 @@
 
                 </div>
             </div>
-            <div class="row wow bounceIn" data-wow-delay="300ms">
-                <div class="col-md-12">
-                    <div id="map"></div>
-                </div>
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="1170px" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=%D8%B3%D8%AA%D8%A7%D8%B1%D8%AE%D8%A7%D9%86%20%D8%AE%D8%B3%D8%B1%D9%88%20%D8%AC%D9%86%D9%88%D8%A8%DB%8C&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"></iframe>
+                    <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/">demo divi discount code wordpress theme</a></div>
+                <style>.mapouter {
+                        position: relative;
+                        text-align: right;
+                        height: 500px;
+                        width: 100%;
+                    }
+
+                    .gmap_canvas {
+                        overflow: hidden;
+                        background: none !important;
+                        height: 500px;
+                        width: 100%;
+                    }</style>
             </div>
         </div>
     </section>

@@ -1,9 +1,9 @@
 <?php
 
-use App\Permission;
-use App\PermissionTitle;
 use App\Role;
 use App\User;
+use App\Permission;
+use App\PermissionTitle;
 use Illuminate\Database\Seeder;
 
 class LaratrustTableSeeder extends Seeder
@@ -12,6 +12,7 @@ class LaratrustTableSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws \Exception
      */
     public function run()
     {
@@ -434,6 +435,17 @@ class LaratrustTableSeeder extends Seeder
                         'name' => 'edit-contact',
                         'display_name' => 'ویرایش تماس با ما',
                         'description' => 'توانایی ویرایش تماس با ما',
+                    ],
+                ],
+            ],
+            //Contact-Us
+            [
+                'title' => 'همکاری با ما',
+                'detail' => [
+                    [
+                        'name' => 'read-recruitment',
+                        'display_name' => 'مشاهده تماس با ما',
+                        'description' => 'توانایی مشاهده تماس با ما',
                     ],
                 ],
             ],

@@ -31,19 +31,22 @@ class RecruitmentRepository
     {
         $file = Storage::put('public/recruitment', $request->file('file'));
 
-        $request->merge(['file' => $file]);
+        $file = str_replace('public', 'storage', $file);
+
+        $fields = $request->only([
+            'full_name',
+            'phone',
+            'education',
+            'job_position',
+            'address',
+            'email',
+            'collaboration_type',
+        ]);
+
+        $fields['file'] = $file;
 
         return $this->recruitment::create(
-            $items ?? $request->only([
-                'full_name',
-                'phone',
-                'education',
-                'job_position',
-                'address',
-                'email',
-                'collaboration_type',
-                'file',
-            ])
+            $items ?? $fields
         );
     }
 
@@ -51,10 +54,10 @@ class RecruitmentRepository
      * Find a link by id.
      *
      * @param $id
-     * @return \App\Recruitment
+     * @return \App\Recruitment|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public function findById($id): Recruitment
+    public function findById($id)
     {
         return $this->recruitment::findOrFail($id);
     }
