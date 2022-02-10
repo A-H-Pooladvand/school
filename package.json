@@ -27,7 +27,7 @@
         "jquery-locationpicker": "^0.1.12",
         "jquery-ui": "^1.12.1",
         "md.bootstrappersiandatetimepicker": "^2.2.1",
-        "node-sass": "^4.9.0",
+        "node-sass": "^7.0.0",
         "npm": "^6.1.0",
         "pretty-checkbox": "^3.0.3",
         "selectize": "^0.12.4",
